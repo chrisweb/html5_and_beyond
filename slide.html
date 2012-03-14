@@ -1170,7 +1170,7 @@ OR
             <article>
                 <h2>audio API</h2>
                 <p>An API for playing audio which can be used with the new audio tag.</p>
-                <pre style="overflow:auto; height: 320px;">
+                <pre style="overflow:auto; height: 220px;">
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
     &lt;head&gt;
@@ -1206,13 +1206,14 @@ OR
                 <audio id="audio_example" controls="controls" preload="auto">
                     <source src="http://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg" type="audio/ogg" />
                     <source src="./audio/example.mp3" type="audio/mpeg" />
-                </audio>  
+                </audio>
                 <div>  
                     <button onclick="document.getElementById('audio_example').play()">Play the Audio</button>  
                     <button onclick="document.getElementById('audio_example').pause()">Pause the Audio</button>  
                     <button onclick="document.getElementById('audio_example').volume+=0.1">Increase Volume</button>  
                     <button onclick="document.getElementById('audio_example').volume-=0.1">Decrease Volume</button>  
                 </div>
+				<p>A very nice audio library can be found <a href="http://kolber.github.com/audiojs/">on github.</a> Audio.js is a javascript library which fallbacks to flash in older browsers that don't have the HTML5 audio capabilities.</p>
             </article>
             
             <article>
@@ -1451,9 +1452,10 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                 <p>The w3c recommendation can be found on <a href="http://www.w3.org/TR/SVG/">this page</a></p>
             </article>
 
-            <article>
+            <article class="smaller">
                 <h2>webSQL</h2>
                 <p>This API is not active anymore, if you want more details take a look at the <a href="http://www.w3.org/TR/webdatabase/">w3c webdatabase specification</a>.</p>
+				<p>The w3c decided to stop working on this specification because of a lack of different implementation ways. Every vendor that supported it used SQLite as the backend. Therefore the w3c was unable to test different implementations and stopped the working group. Which in my opinion is very sad for the web, but i don't blame anyone because i can understand why the w3c stopped their work and i can understand the browser vendors for all choosing SQLite as backend, writing and supporting an own backend can be a lot of work.</p>
 				<img src="lightbulb.png" style="float: left;"><blockquote>Beware. This specification is no longer in active maintenance and the Web Applications Working Group does not intend to maintain it further.</blockquote>
 			</article>
 
