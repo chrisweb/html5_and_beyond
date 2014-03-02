@@ -12,7 +12,7 @@
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {maximumAge:1});
                 } else {
-                    console.log("geolocation is not supported by your browser!");
+                    console.log('geolocation is not supported by your browser!');
                 }
                 
                 watchId = navigator.geolocation.watchPosition(function(position) {  

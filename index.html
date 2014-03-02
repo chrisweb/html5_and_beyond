@@ -13,6 +13,13 @@
 
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+        
+        <!-- styles used by the examples -->
+        <style>
+            :invalid {
+                border: 1px solid red;
+            }
+        </style>
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -31,6 +38,7 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
 	</head>
 
 	<body>
@@ -489,36 +497,7 @@
                         <li>a progress bar <a href="http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/">styling guide</a></li>
                     </ul>
                     <h3>demo:</h3>
-                    <p>Progress: <progress id="progressBar" max=100></progress></p>
-                    <script>
-                        
-                        var progressBar = document.getElementById('progressBar');
-                        var progressCounter = 0;
-                        var timeout;
-                        
-                        function updateProgress() {
-                            
-                            console.log('progress on');
-                            
-                            var newValue = Math.random();
-                            newValue = newValue * 100;
-                            
-                            progressBar.value = newValue;
-                            
-                            timeout = window.setTimeout('updateProgress();', 1000);
-                            
-                            progressCounter++;
-                            
-                            if (progressCounter > 10) {
-                                
-                                window.clearTimeout(timeout);
-                                progressCounter = 0;
-                                
-                            }
-                            
-                        }
-                        
-                    </script>
+                    <p>Progress: <progress id="progressBar" max="100" value="22"></progress></p>
                     <pre><code data-trim>
 &lt;progress value=&quot;22&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;
                     </code></pre>
@@ -532,39 +511,10 @@
                     </ul>
                     <h3>demo:</h3>
                     <p>Meter: <meter value="0" min="0" max="100" low="30" high="70" optimum="10" title="seconds" id="meterBar" style="height: 30px; width: 200px;"></meter></p>
-                    <script>
-
-                        var meterBar = document.getElementById('meterBar');
-                        var meterCounter = 0;
-                        var timeout;
-
-                        function updateMeter() {
-
-                            console.log('meter on');
-
-                            var newValue = Math.random();
-                            newValue = newValue * 100;
-
-                            meterBar.value = newValue;
-
-                            timeout = window.setTimeout('updateMeter();', 1000);
-
-                            meterCounter++;
-
-                            if (meterCounter > 10) {
-
-                                window.clearTimeout(timeout);
-                                meterCounter = 0;
-
-                            }
-
-                        }
-
-                    </script>
                     <pre><code data-trim>
-    &lt;meter value=55 min=0 max=100 low=30 high=70 optimum=80&gt;&lt;/meter&gt;
+&lt;meter value=55 min=0 max=100 low=30 high=70 optimum=80&gt;&lt;/meter&gt;
                     </code></pre>
-                    <img src="lightbulb.png" style="float: left;">
+                    <img src="images/lightbulb.png" style="float: left;">
                     <blockquote>
                         If the optimum is below min the meter color will be red, between min and max yellow and green above max. The colors will be in reverse order if the optimum is below min, min green, middle yellow and max green. If the optimum is between min and max the color is green else yellow.<a href="http://www.w3.org/TR/html5/the-button-element.html#attr-meter-optimum">definition of optimum</a>
                     </blockquote>
@@ -572,19 +522,26 @@
                 </section>
 
                 <section>
-                    <h2>&lt;time&gt;</h2>
-                    <ul>
-                        <li>machine readable datetime attribute</li>
-                    </ul>
-                    <pre><code data-trim>
+                    <section>
+                        <h2>&lt;time&gt;</h2>
+                        <ul>
+                            <li>machine readable datetime attribute</li>
+                        </ul>
+                        <pre><code data-trim>
     &lt;article&gt;
         &lt;time datetime=&quot;YYYY-MM-DDThh:mm:ssTZD&quot;&gt;
         &lt;time datetime=&quot;2012-04-17&quot; pubdate=&quot;pubdate&quot;&gt;17.4.2012&lt;/time&gt;
     &lt;/article&gt;
-                    </code></pre>
-                    <p>A good article describing how to use the time tag can be found <a href="http://www.brucelawson.co.uk/2012/best-of-time/">on Bruce Lawson's blog</a></p>
-                    <p>Some time ago <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=13240">the time tag was dropped</a>, but then after protest of web developers was put back in.</p>
-                    <img src="lightbulb.png" style="float: left;"><blockquote>The pubdate attribute is a boolean attribute. If specified, it indicates that the date and time given by the element is the publication date and time of the nearest ancestor article element, or, if the element has no ancestor article element, of the document as a whole. But it's not sure <a href="http://www.w3.org/html/wg/tracker/issues/185">if the pubdate attribute will stay</a>.</blockquote>
+                        </code></pre>
+                        <p>A good article describing how to use the time tag can be found <a href="http://www.brucelawson.co.uk/2012/best-of-time/">on Bruce Lawson's blog</a></p>
+                        <p>Some time ago <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=13240">the time tag was dropped</a>, but then after protest of web developers was put back in.</p>
+                    </section>
+                    <section>
+                        <img src="images/lightbulb.png" style="float: left;">
+                        <blockquote>
+                            The pubdate attribute is a boolean attribute. If specified, it indicates that the date and time given by the element is the publication date and time of the nearest ancestor article element, or, if the element has no ancestor article element, of the document as a whole. But it's not sure <a href="http://www.w3.org/html/wg/tracker/issues/185">if the pubdate attribute will stay</a>.
+                        </blockquote>
+                    </section>
                 </section>
 
                 <section>
@@ -607,134 +564,104 @@
                         <li>brother of br tag, but it only indicates that a br could be useful but does not enforce it</li>
                         <li>line break opportunity if text is too large to be in one line</li>
                     </ul>
-                    <pre style="overflow:auto; height: 350px;">
-    &lt;!DOCTYPE html&gt;
-    &lt;html lang=&quot;en&quot;&gt;
-        &lt;head&gt;
-            &lt;meta charset=&quot;UTF-8&quot;&gt;
-            &lt;title&gt;wbr&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id eleifend odio. Sed eget fermentum nisi. Donec posuere, nulla eget lobortis mattis, &lt;wbr&gt;(the &amp;lt;wbr&amp;gt; is here) quam dolor commodo dolor, ac hendrerit mi orci ut mauris. Donec sed lectus dui, vel gravida urna. Mauris vulputate nulla at est tincidunt a euismod leo commodo. Pellentesque pretium sapien pellentesque dui volutpat dictum. &lt;/p&gt;
-            &lt;p&gt;Llllooorrreeeemmmm&lt;wbr&gt;(&amp;lt;wbr&amp;gt;)iiiiippppppsssssuuuuummmmmm&lt;/p&gt;
-            &lt;p&gt;Llllooorrreeeemmmmmmiiiiiiiippppppsssssuuuuuuummmmmmm&lt;/p&gt;
-        &lt;/body&gt;
-    &lt;/html&gt;
+                    <pre><code data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;wbr&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id eleifend odio. Sed eget fermentum nisi. Donec posuere, nulla eget lobortis mattis, &lt;wbr&gt;(the &amp;lt;wbr&amp;gt; is here) quam dolor commodo dolor, ac hendrerit mi orci ut mauris. Donec sed lectus dui, vel gravida urna. Mauris vulputate nulla at est tincidunt a euismod leo commodo. Pellentesque pretium sapien pellentesque dui volutpat dictum. &lt;/p&gt;
+        &lt;p&gt;Llllooorrreeeemmmm&lt;wbr&gt;(&amp;lt;wbr&amp;gt;)iiiiippppppsssssuuuuummmmmm&lt;/p&gt;
+        &lt;p&gt;Llllooorrreeeemmmmmmiiiiiiiippppppsssssuuuuuuummmmmmm&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
                     </code></pre>
                 </section>
 
                 <section>
-                    <h2>&lt;canvas&gt;</h2>
-                    <ul>
-                        <li>canvas can have two different contexts 2D and 3D</li>
-                        <li><a href="http://diveinto.html5doctor.com/canvas.html#divingin">dive into html5</a> canvas article</li>
-                        <li>a very good tutorial can be found on the <a href="https://developer.mozilla.org/en/Canvas_tutorial">mozilla dev center</a></li>
-                        <li>for IE there is a javascript polyfill library that emulates canvas in older IE version by using SVG graphics instead of canvas, that library is called <a href="http://excanvas.sourceforge.net/">excanvas.js</a></li>
-                        <li>This article compares two well known <a href="http://coding.smashingmagazine.com/2012/02/22/web-drawing-throwdown-paper-processing-raphael/">javascript drawing libraries</a> that make use of the canvas element, <a href="http://paperjs.org/">paper.js</a> and <a href="http://processingjs.org/">processing.js</a>.</li>
-                        <li>Another nice use case for canvas is displaying pdf documents by reading the pdf using <a href="https://github.com/mozilla/pdf.js">pdf.js</a> from mozilla and then using the canvas element to display it.</li>
-                        <li>Examples of a games done with canvas are <a href="http://chrome.angrybirds.com/">angry birds html5</a> and <a href="http://www.cuttherope.ie/">cut the rope html5</a>.</li>
-                    </ul>
-                    <img src="lightbulb.png" style="float: left;"><blockquote>when setting the size of a canvas area use the canvas tag width and height attributes, else image gets scaled to fir size defined by css</blockquote>
-                </section>
+                    <section>
+                        <h2>&lt;canvas&gt;</h2>
+                        <ul>
+                            <li>canvas can have two different contexts 2D and 3D</li>
+                            <li><a href="http://diveinto.html5doctor.com/canvas.html#divingin">dive into html5</a> canvas article</li>
+                            <li>a very good tutorial can be found on the <a href="https://developer.mozilla.org/en/Canvas_tutorial">mozilla dev center</a></li>
+                            <li>for IE there is a javascript polyfill library that emulates canvas in older IE version by using SVG graphics instead of canvas, that library is called <a href="http://excanvas.sourceforge.net/">excanvas.js</a></li>
+                            <li>This article compares two well known <a href="http://coding.smashingmagazine.com/2012/02/22/web-drawing-throwdown-paper-processing-raphael/">javascript drawing libraries</a> that make use of the canvas element, <a href="http://paperjs.org/">paper.js</a> and <a href="http://processingjs.org/">processing.js</a>.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>Another nice use case for canvas is displaying pdf documents by reading the pdf using <a href="https://github.com/mozilla/pdf.js">pdf.js</a> from mozilla and then using the canvas element to display it.</li>
+                            <li>Examples of a games done with canvas are <a href="http://chrome.angrybirds.com/">angry birds html5</a> and <a href="http://www.cuttherope.ie/">cut the rope html5</a>.</li>
+                        </ul>
+                        <img src="images/lightbulb.png" style="float: left;">
+                        <blockquote>
+                            when setting the size of a canvas area use the canvas tag width and height attributes, else image gets scaled to fir size defined by css
+                        </blockquote>
+                    </section>
+                    <section>
+                        <h2>Basic example (Code):</h2>
+                        <pre><code data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;html5 line canvas&lt;/title&gt;
+    &lt;script&gt;
 
-                <section>
-                    <h2>Basic example (Code):</h2>
-                    <pre style="overflow:auto; height: 500px;">
-    &lt;!DOCTYPE html&gt;
-    &lt;html lang=&quot;en&quot;&gt;
-        &lt;head&gt;
-            &lt;meta charset=&quot;UTF-8&quot;&gt;
-            &lt;title&gt;html5 line canvas&lt;/title&gt;
-            &lt;script&gt;
+        function initialize() {
 
-                function initialize() {
+            var canvas = document.getElementById('example');
 
-                    var canvas = document.getElementById('example');
+            if (canvas.getContext) {
 
-                    if (canvas.getContext) {
+                var context = canvas.getContext('2d');
 
-                        var context = canvas.getContext('2d');
+                fillRectangle(context);
+                drawLine(context);
 
-                        fillRectangle(context);
-                        drawLine(context);
+            }
 
-                    }
+        }
 
-                }
+        function drawLine(context) {
 
-                function drawLine(context) {
+            context.moveTo(100, 150);
+            context.lineTo(250, 50);
+            context.stroke();
 
-                    context.moveTo(100, 150);
-                    context.lineTo(250, 50);
-                    context.stroke();
+        }
 
-                }
+        function fillRectangle(context) {
 
-                function fillRectangle(context) {
+            var gradient = context.createLinearGradient(0, 0, 0, 100);
+            gradient.addColorStop(0, "#ff005a");
+            gradient.addColorStop(1, "#ff985a");
 
-                    var gradient = context.createLinearGradient(0, 0, 0, 100);
-                    gradient.addColorStop(0, "#ff005a");
-                    gradient.addColorStop(1, "#ff985a");
+            context.fillStyle = gradient;
+            context.fillRect(50, 50, 150, 150);
 
-                    context.fillStyle = gradient;
-                    context.fillRect(50, 50, 150, 150);
+        }
 
-                }
-
-            &lt;/script&gt;
-            &lt;style&gt;
-                canvas { 
-                    border: 1px solid blue;
-                }
-            &lt;/style&gt;
-        &lt;/head&gt;
-        &lt;body onLoad=&quot;initialize();&quot;&gt;
-            &lt;canvas id=&quot;example&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;Your browser does not support canvas ... go away!&lt;/canvas&gt;
-        &lt;/body&gt;
-    &lt;/html&gt;
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Basic example (Result):</h2>
-                    <script>
-
-                        function initialize() {
-
-                            var canvas = document.getElementById('example');
-
-                            if (canvas.getContext) {
-
-                                var context = canvas.getContext('2d');
-
-                                fillRectangle(context);
-                                drawLine(context);
-
-                            }
-
-                        }
-
-                        function drawLine(context) {
-
-                            context.moveTo(100, 150);
-                            context.lineTo(250, 50);
-                            context.stroke();
-
-                        }
-
-                        function fillRectangle(context) {
-
-                            var gradient = context.createLinearGradient(0, 0, 0, 100);
-                            gradient.addColorStop(0, "#ff005a");
-                            gradient.addColorStop(1, "#ff985a");
-
-                            context.fillStyle = gradient;
-                            context.fillRect(50, 50, 150, 150);
-
-                        }
-
-                    </script>
-                    <canvas id="example" width="500" height="300">Your browser does not support canvas ... go away!</canvas>
+    &lt;/script&gt;
+    &lt;style&gt;
+        canvas { 
+            border: 1px solid blue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body onLoad=&quot;initialize();&quot;&gt;
+    &lt;canvas id=&quot;example&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;Your browser does not support canvas ... go away!&lt;/canvas&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Basic example (Result):</h2>
+                        <canvas id="example" width="500" height="300">Your browser does not support canvas ... go away!</canvas>
+                    </section>
                 </section>
 
                 <section>
@@ -751,13 +678,13 @@
                     <ul>
                         <li>A menu of commands for keyboard shortcuts or other javascript functions by using attributes like the onclick attribute</li>
                     </ul>
-                    <pre style="overflow:auto;">
-    &lt;menu type=&quot;toolbar&quot;&gt;
-        &lt;command type=&quot;radio&quot; radiogroup=&quot;alignment&quot; checked=&quot;checked&quot; label=&quot;Left&quot; icon=&quot;icons/left.png&quot; onclick=&quot;alert('left')&quot;&gt;
-        &lt;command type=&quot;radio&quot; radiogroup=&quot;alignment&quot; label=&quot;Right&quot; icon=&quot;icons/right.png&quot; onclick=&quot;alert('right')&quot;&gt;
-        &lt;hr&gt;
-        &lt;command type=&quot;command&quot; disabled label=&quot;Publish&quot; icon=&quot;icons/disabled.png&quot; onclick=&quot;alert('disabled')&quot;&gt;
-    &lt;/menu&gt;
+                    <pre><code data-trim>
+&lt;menu type=&quot;toolbar&quot;&gt;
+    &lt;command type=&quot;radio&quot; radiogroup=&quot;alignment&quot; checked=&quot;checked&quot; label=&quot;Left&quot; icon=&quot;icons/left.png&quot; onclick=&quot;alert('left')&quot;&gt;
+    &lt;command type=&quot;radio&quot; radiogroup=&quot;alignment&quot; label=&quot;Right&quot; icon=&quot;icons/right.png&quot; onclick=&quot;alert('right')&quot;&gt;
+    &lt;hr&gt;
+    &lt;command type=&quot;command&quot; disabled label=&quot;Publish&quot; icon=&quot;icons/disabled.png&quot; onclick=&quot;alert('disabled')&quot;&gt;
+&lt;/menu&gt;
                     </code></pre>
                     <h4>No browser has implemented this tag yet</h4>
                 </section>
@@ -767,11 +694,11 @@
                     <ul>
                         <li>a widget to show / hide additional informations</li>
                     </ul>
-                    <pre style="overflow:auto;">
-    &lt;details&gt;
-        &lt;summary&gt;summary&lt;/summary&gt;
-        &lt;p&gt;Additional Data.&lt;/p&gt;
-    &lt;/details&gt;
+                    <pre><code data-trim>
+&lt;details&gt;
+    &lt;summary&gt;summary&lt;/summary&gt;
+    &lt;p&gt;Additional Data.&lt;/p&gt;
+&lt;/details&gt;
                     </code></pre>
             <details>
                         <summary>summary</summary>
@@ -784,17 +711,17 @@
                     <ul>
                         <li>a list of options to add suggestions to an input field</li>
                     </ul>
-                    <pre style="overflow:auto;">
-    &lt;form&gt;
-        &lt;input list=&quot;browsers&quot;&gt;
-        &lt;datalist id=&quot;browsers&quot;&gt;
-            &lt;option value=&quot;Chrome&quot;&gt;
-            &lt;option value=&quot;Firefox&quot;&gt;
-            &lt;option value=&quot;Safari&quot;&gt;
-            &lt;option value=&quot;Internet Explorer&quot;&gt;
-            &lt;option value=&quot;Opera&quot;&gt;
-        &lt;/datalist&gt;
-    &lt;/form&gt;
+                    <pre><code data-trim>
+&lt;form&gt;
+    &lt;input list=&quot;browsers&quot;&gt;
+    &lt;datalist id=&quot;browsers&quot;&gt;
+        &lt;option value=&quot;Chrome&quot;&gt;
+        &lt;option value=&quot;Firefox&quot;&gt;
+        &lt;option value=&quot;Safari&quot;&gt;
+        &lt;option value=&quot;Internet Explorer&quot;&gt;
+        &lt;option value=&quot;Opera&quot;&gt;
+    &lt;/datalist&gt;
+&lt;/form&gt;
                     </code></pre>
                     <form>
                         <input list="browsers">
@@ -845,59 +772,74 @@
                 </section>
 
                 <section>
-                    <h2>Should i use the new tags today?</h2>
-                    <ul>
-                        <li>Most of them can be used now, some of them like video, audio and canvas tag should fallback to other technologies if not supported</li>
-                        <li>Therefore you will probably need a feature detection like <a href="https://github.com/Modernizr/Modernizr">modernizr</a> and <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">polyfills</a> to emulate the native feature in older browsers if modernizr tells you that the feature is not supported</li>
-                        <li>And you will need <a href="https://github.com/aFarkas/html5shiv/blob/master/src/html5shiv-printshiv.js">HTML5shiv with printshiv for IE</a> if you want IE < 9 to recognize the new tags and be able to apply css rules on them even for print:</li>
-                    </ul>
-                    <pre><code data-trim>
+                    <section>
+                        <h2>Should i use the new tags today?</h2>
+                        <ul>
+                            <li>Most of them can be used now, some of them like video, audio and canvas tag should fallback to other technologies if not supported</li>
+                            <li>Therefore you will probably need a feature detection like <a href="https://github.com/Modernizr/Modernizr">modernizr</a> and <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">polyfills</a> to emulate the native feature in older browsers if modernizr tells you that the feature is not supported</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>And you will need <a href="https://github.com/aFarkas/html5shiv/blob/master/src/html5shiv-printshiv.js">HTML5shiv with printshiv for IE</a> if you want IE < 9 to recognize the new tags and be able to apply css rules on them even for print:</li>
+                        </ul>
+                        <pre><code data-trim>
     &lt;!--[if lt IE 9]&gt;
     &lt;script src=&quot;//example.com/html5shiv-printshiv.js&quot;&gt;&lt;/script&gt;
     &lt;![endif]--&gt;
-                    </code></pre>
-                    <img src="lightbulb.png" style="float: left;"><blockquote>Did you notice the double slash in the URI, this is valid, advantage of omitting the protocol (http: / https:), is that the browser will choose which to use depending on the protocol used by your page</blockquote>
-                    <br>
+                        </code></pre>
+                        <img src="images/lightbulb.png" style="float: left;">
+                        <blockquote>
+                            Did you notice the double slash in the URI, this is valid, advantage of omitting the protocol (http: / https:), is that the browser will choose which to use depending on the protocol used by your page
+                        </blockquote>
+                     </section>
                 </section>
 
                 <section>
-                    <h2>data attribute</h2>
-                    <p>In HTML5 users can create custom attributes that will be valid, the only rule is that the attribute must be prefixed with data-, for example data-foo="bar".</p>
-                    <img src="lightbulb.png" style="float: left;"><blockquote>it's recommended that you use a specific prefix after the data prefix for your app to avoid conflicts with other libraries you use that also use the data attribute but may not have an own prefix</blockquote>
-                    <pre style="overflow:auto; height: 330px;">
-    &lt;!DOCTYPE html&gt;
-    &lt;html lang=&quot;en&quot;&gt;
-        &lt;head&gt;
-            &lt;meta charset=&quot;UTF-8&quot;&gt;
-            &lt;title&gt;html5 data attribute&lt;/title&gt;
-            &lt;script&gt;
-                function initialize() {
+                    <section>
+                        <h2>data attribute</h2>
+                        <p>In HTML5 users can create custom attributes that will be valid, the only rule is that the attribute must be prefixed with data-, for example data-foo="bar".</p>
+                        <img src="images/lightbulb.png" style="float: left;">
+                        <blockquote>
+                            it's recommended that you use a specific prefix after the data prefix for your app to avoid conflicts with other libraries you use that also use the data attribute but may not have an own prefix
+                        </blockquote>
+                    </section>
+                    <section>
+                        <pre><code data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;html5 data attribute&lt;/title&gt;
+        &lt;script&gt;
+            function initialize() {
 
-                    var example = document.querySelector('#example');
+                var example = document.querySelector('#example');
 
-                    // Add new data attributes via JS.
-                    example.dataset.myprefixFoo = 'bar';
-                    //example.setAttribute('data-myprefix-foo', 'bar');
+                // Add new data attributes via JS.
+                example.dataset.myprefixFoo = 'bar';
+                //example.setAttribute('data-myprefix-foo', 'bar');
 
-                    for (var key in example.dataset) {
-                            console.log(key, ': ', example.dataset[key]);
-                    }
-
+                for (var key in example.dataset) {
+                        console.log(key, ': ', example.dataset[key]);
                 }
-            &lt;/script&gt;
-        &lt;/head&gt;
-        &lt;body onload=&quot;initialize();&quot;&gt;
-            &lt;p id=&quot;example&quot; data-myprefix-hello=&quot;world&quot;&gt;Example&lt;/p&gt;
-        &lt;/body&gt;
-    &lt;/html&gt;
-                    </code></pre>
+
+            }
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body onload=&quot;initialize();&quot;&gt;
+        &lt;p id=&quot;example&quot; data-myprefix-hello=&quot;world&quot;&gt;Example&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                    </section>
                 </section>
 
                 <section>
                     <h2>async attribute</h2>
                     <p>A useful new attribute for script tags is the async attribute. It ensures you scripts get loaded asynchronously and don't block you page rendering. Async is useful for all javascript files that have code that you page needs at rendering time, but only later to progressively enhance your page.</p>
                     <pre><code data-trim>
-    &lt;script src=&quot;example.js&quot; async&gt;&lt;/script&gt;
+&lt;script src=&quot;example.js&quot; async&gt;&lt;/script&gt;
                     </code></pre>
                 </section>
 
@@ -911,76 +853,77 @@
                         <menuitem label="BAR" onclick="alert('BAR ACTION');"></menuitem>
                     </menu>
                     <pre><code data-trim>
-    &lt;!DOCTYPE html&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Context Menu&lt;/title&gt;
-    &lt;p contextmenu=examplemenu&gt;Right Click ME!&lt;/p&gt;
-    &lt;menu type=context id=examplemenu&gt;
-        &lt;command label=&quot;FOO&quot; onclick=&quot;alert('FOO ACTION');&quot;&gt;
-        &lt;command label=&quot;BAR&quot; onclick=&quot;alert('BAR ACTION');)&quot;&gt;
-    &lt;/menu&gt;
+&lt;!DOCTYPE html&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Context Menu&lt;/title&gt;
+&lt;p contextmenu=examplemenu&gt;Right Click ME!&lt;/p&gt;
+&lt;menu type=context id=examplemenu&gt;
+    &lt;command label=&quot;FOO&quot; onclick=&quot;alert('FOO ACTION');&quot;&gt;
+    &lt;command label=&quot;BAR&quot; onclick=&quot;alert('BAR ACTION');)&quot;&gt;
+&lt;/menu&gt;
                     </code></pre>
                     <p>(As of today, works only in latest Firefox)</p>
                 </section>
 
                 <section>
-                    <h2>new input field types</h2>
-                    <div style="width: 50%; float: left;">
-                        <ul>
-                            <li>tel</li>
-                            <li>search</li>
-                            <li>url</li>
-                            <li>email</li>
-                            <li>datetime</li>
-                            <li>date</li>
-                            <li>month</li>
-                        </ul>
-                    </div>
-                    <div style="width: 50%; float: left;">
-                        <ul>
-                            <li>week</li>
-                            <li>time</li>
-                            <li>datetime-local</li>
-                            <li>number</li>
-                            <li>range</li>
-                            <li>color</li>
-                        </ul>
-                    </div>
-                    <div style="clear: both;"></div>
-                    <p>An howto for using yepnope and modernizr to detect the new native form input types or use a fallback can be found at <a href="http://css-tricks.com/progressively-enhancing-html5-forms/">css-tricks.com</a></p>
-                </section>
-
-                <section>
-                    <pre style="overflow:auto; height: 550px;">
-    &lt;!DOCTYPE html&gt;
-    &lt;html lang=&quot;en&quot;&gt;
-        &lt;head&gt;
-            &lt;meta charset=&quot;UTF-8&quot;&gt;
-            &lt;title&gt;html5 form input types&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-            &lt;form&gt;
-                &lt;ul&gt;
-                    &lt;li&gt;&lt;input type=&quot;tel&quot; placeholder=&quot;tel&quot; required=&quot;required&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;search&quot; placeholder=&quot;search&quot; autofocus=&quot;autofocus&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;url&quot; placeholder=&quot;url&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;email&quot; placeholder=&quot;email&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;datetime&quot; placeholder=&quot;datetime&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;date&quot; placeholder=&quot;date&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;month&quot; placeholder=&quot;month&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;week&quot; placeholder=&quot;week&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;time&quot; placeholder=&quot;time&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;datetime-local&quot; placeholder=&quot;datetime-local&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;number&quot; placeholder=&quot;number&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;range&quot; placeholder=&quot;range&quot;&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;color&quot; placeholder=&quot;color&quot; required&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;text&quot; placeholder=&quot;pattern attribute&quot; id=&quot;part&quot; name=&quot;part&quot; required pattern=&quot;[A-Z]{3}[0-9]{4}&quot; title=&quot;Part numbers consist of 3 uppercase letters followed by 4 digits.&quot; /&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;input type=&quot;submit&quot; value=&quot;go4it&quot;&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/form&gt;
-        &lt;/body&gt;
-    &lt;/html&gt;
-                    </code></pre>
+                    <section>
+                        <h2>new input field types</h2>
+                        <div style="width: 50%; float: left;">
+                            <ul>
+                                <li>tel</li>
+                                <li>search</li>
+                                <li>url</li>
+                                <li>email</li>
+                                <li>datetime</li>
+                                <li>date</li>
+                                <li>month</li>
+                            </ul>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                            <ul>
+                                <li>week</li>
+                                <li>time</li>
+                                <li>datetime-local</li>
+                                <li>number</li>
+                                <li>range</li>
+                                <li>color</li>
+                            </ul>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <p>An howto for using yepnope and modernizr to detect the new native form input types or use a fallback can be found at <a href="http://css-tricks.com/progressively-enhancing-html5-forms/">css-tricks.com</a></p>
+                    </section>
+                    <section>
+                        <pre><code data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;html5 form input types&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;input type=&quot;tel&quot; placeholder=&quot;tel&quot; required=&quot;required&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;search&quot; placeholder=&quot;search&quot; autofocus=&quot;autofocus&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;url&quot; placeholder=&quot;url&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;email&quot; placeholder=&quot;email&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;datetime&quot; placeholder=&quot;datetime&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;date&quot; placeholder=&quot;date&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;month&quot; placeholder=&quot;month&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;week&quot; placeholder=&quot;week&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;time&quot; placeholder=&quot;time&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;datetime-local&quot; placeholder=&quot;datetime-local&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;number&quot; placeholder=&quot;number&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;range&quot; placeholder=&quot;range&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;color&quot; placeholder=&quot;color&quot; required&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;text&quot; placeholder=&quot;pattern attribute&quot; id=&quot;part&quot; name=&quot;part&quot; required pattern=&quot;[A-Z]{3}[0-9]{4}&quot; title=&quot;Part numbers consist of 3 uppercase letters followed by 4 digits.&quot; /&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;input type=&quot;submit&quot; value=&quot;go4it&quot;&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                    </section>
                 </section>
 
                 <section>
@@ -988,7 +931,7 @@
                     <p>Side note not related to html5: Since google chrome 11, there is also a new input field attribute x-webkit-speech (not a standard from w3c and therefore not part of html5 / for chrome only)</p>
                     <p>google did submit a proposal for this to the w3c, <a href="http://lists.w3.org/Archives/Public/public-xg-htmlspeech/2011Feb/att-0020/api-draft.html">speech input draft</a></p>
                     <pre><code data-trim>
-    &lt;input type=&quot;text&quot; x-webkit-speech /&gt;
+&lt;input type=&quot;text&quot; x-webkit-speech /&gt;
                     </code></pre>
                     <form>
                         <input type="text" x-webkit-speech style="height: 50px; width: 300px; font-size: 33px;" />
@@ -999,7 +942,7 @@
                     <h2>placeholder attribute</h2>
                     <p>There is a new attribute called the placeholder attribute for forms input fields. It will create a semi transparent text inside input fields indented to eventually replace the label.</p>
                     <pre><code data-trim>
-    &lt;input type=&quot;text&quot; placeholder=&quot;placeholder text&quot; /&gt;
+&lt;input type=&quot;text&quot; placeholder=&quot;placeholder text&quot; /&gt;
                     </code></pre>
                     <form>
                         <input type="text" placeholder="placeholder text" style="height: 50px; width: 300px; font-size: 33px;" />
@@ -1010,8 +953,8 @@
                     <h2>autofocus attribute</h2>
                     <p>Use the autofocus attribute as attribute of the input field of your form if you want that field to be selected open opening the page.</p>
                     <pre><code data-trim>
-    &lt;input type=&quot;text&quot; autofocus /&gt;
-    &lt;input type=&quot;text&quot; autofocus=&quot;autofocus&quot; /&gt;
+&lt;input type=&quot;text&quot; autofocus /&gt;
+&lt;input type=&quot;text&quot; autofocus=&quot;autofocus&quot; /&gt;
                     </code></pre>
                 </section>
 
@@ -1019,8 +962,8 @@
                     <h2>required attribute</h2>
                     <p>Form fields can now have the attribute required, browsers like chrome will show a tooltip message near the field if the user tries to submit the form but the field is still empty and will prevent the submit event until the required field is not empty anymore.</p>
                     <pre><code data-trim>
-    &lt;input type=&quot;text&quot; required /&gt;
-    &lt;input type=&quot;text&quot; required=&quot;required&quot; /&gt;
+&lt;input type=&quot;text&quot; required /&gt;
+&lt;input type=&quot;text&quot; required=&quot;required&quot; /&gt;
                     </code></pre>
                     <form>
                         <input type="text" required="required" placeholder="this field is required" style="height: 50px; width: 300px; font-size: 33px;" />
@@ -1032,14 +975,14 @@
                 <section>
                     <h2>pattern attribute</h2>
                     <p>Using the pattern attribute you can define a regular expression that your field content is validated against. You should also use the title attribute and explain what you expect from the user.</p>
-                    <pre style="overflow:auto; height: 50px;">
-    &lt;input type=&quot;text&quot; placeholder=&quot;pattern attribute&quot; id=&quot;part&quot; name=&quot;part&quot; required pattern=&quot;[A-Z]{3}[0-9]{4}&quot; title=&quot;Part numbers consist of 3 uppercase letters followed by 4 digits.&quot; /&gt;
-                    </code></pre>
-                    <img src="lightbulb.png" style="float: left;"><blockquote>If the input does not match the pattern, the CSS selector "invalid" will be added to the field and you can use it to style the field differently:
                     <pre><code data-trim>
-    :invalid {
-      border: 1px solid red;
-    }
+&lt;input type=&quot;text&quot; placeholder=&quot;pattern attribute&quot; id=&quot;part&quot; name=&quot;part&quot; required pattern=&quot;[A-Z]{3}[0-9]{4}&quot; title=&quot;Part numbers consist of 3 uppercase letters followed by 4 digits.&quot; /&gt;
+                    </code></pre>
+                    <img src="images/lightbulb.png" style="float: left;"><blockquote>If the input does not match the pattern, the CSS selector "invalid" will be added to the field and you can use it to style the field differently:
+                    <pre><code data-trim>
+:invalid {
+  border: 1px solid red;
+}
                     </code></pre>
                     </blockquote>
                     <form>
@@ -1052,9 +995,9 @@
                     <h2>multiple attribute</h2>
                     <p><b>To upload multiple files</b> you can add the new <b>multiple attribute</b> to the file input tag. The other can now select multiple files and then click the upload button. You have to adapt your side side scripts to let them accept multiple file uploads and maybe should add some rules to avoid users spamming you with hundreds of file uploads.</p>
                     <pre><code data-trim>
-    &lt;input type=&quot;file&quot; multiple&gt;
-    OR
-    &lt;input type=&quot;file&quot; multiple=&quot;multiple&quot;&gt;
+&lt;input type=&quot;file&quot; multiple&gt;
+OR
+&lt;input type=&quot;file&quot; multiple=&quot;multiple&quot;&gt;
                     </code></pre>
                 </section>
 
@@ -1066,115 +1009,119 @@
                 </section>
 
                 <section>
-                    <h2>link types</h2>
-                    <p>HTML5 defines some types of links using the <b>rel attribute</b>. One of the new values is <b>prefetch</b> with tells the browser that it can prefetch that link because it is likely this resource next.</p>
-                    <p>Or the values <b>prev and next</b> which are useful for pagination.</p>
-                    <p><b>Nofollow</b> tells search engines that the link should not influence link targets rating (its useful to avoid hackers to spam your comments sections with posts full of links if you apply automatically nofollow to all links that are in comments).</p>
-                    <p>The <b>bookmark</b> link type could be very usefull too, it specifies a permalink for the parent content. In combination with url shorteners like <a href="http://goo.gl/">goo.gl</a> and the <a href="http://support.google.com/webmasters/bin/answer.py?hl=en&answer=139394">rel="canonical"</a> you could make permalinks that are usefull for the visitor as well as search engines. Canonical is not part of the HTML5 specification but it will not make your html5 page invalid, because the HTML5 specification says that values of the rel attribute that are unrecognized by the browser will be treated as normal links.</p>
-                    <p>Here is <a href="http://www.w3.org/TR/html5/links.html">a list and description</a> of all rel values available in html5.</p>
+                    <section>
+                        <h2>link types</h2>
+                        <p>HTML5 defines some types of links using the <b>rel attribute</b>. One of the new values is <b>prefetch</b> with tells the browser that it can prefetch that link because it is likely this resource next.</p>
+                        <p>Or the values <b>prev and next</b> which are useful for pagination.</p>
+                        <p><b>Nofollow</b> tells search engines that the link should not influence link targets rating (its useful to avoid hackers to spam your comments sections with posts full of links if you apply automatically nofollow to all links that are in comments).</p>
+                    </section>
+                    <section>
+                        <p>The <b>bookmark</b> link type could be very usefull too, it specifies a permalink for the parent content. In combination with url shorteners like <a href="http://goo.gl/">goo.gl</a> and the <a href="http://support.google.com/webmasters/bin/answer.py?hl=en&answer=139394">rel="canonical"</a> you could make permalinks that are usefull for the visitor as well as search engines. Canonical is not part of the HTML5 specification but it will not make your html5 page invalid, because the HTML5 specification says that values of the rel attribute that are unrecognized by the browser will be treated as normal links.</p>
+                        <p>Here is <a href="http://www.w3.org/TR/html5/links.html">a list and description</a> of all rel values available in html5.</p>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>Microdata</h2>
-                    <p>Microdata are <b>machine-readable labels</b> that can enhance the semantic value of your documents for crawlers like google bot.</p>
-                    <p>the w3c <a href="http://dev.w3.org/html5/md/">microdata specification</a>.</p>
-                    <p>A definition of structures for microdata from <a href="http://schema.org/docs/gs.html">schema.org</a>.</p>
-                </section>
+                    <section>
+                        <h2>Microdata</h2>
+                        <p>Microdata are <b>machine-readable labels</b> that can enhance the semantic value of your documents for crawlers like google bot.</p>
+                        <p>the w3c <a href="http://www.w3.org/TR/microdata/">microdata specification</a>.</p>
+                        <p>A definition of structures for microdata from <a href="http://schema.org/docs/gs.html">schema.org</a>.</p>
+                    </section>
+                    <section>
+                        <h2>Microdata = SEO ?</h2>
+                        <p>I think so</p>
+                        <p>Google has <a href="http://support.google.com/webmasters/bin/answer.py?hl=en&answer=99170">a very useful page</a> about microdata, at the end of the page are examples of microdata that google recognizes like people or reviews. Go for example to the page reviews and there you will find examples howto use microdata to ensure google uses your data to create rich snippets that will enhance the search results of your site in google results pages.</p>
+                        <p>You can <a href="http://www.google.com/webmasters/tools/richsnippets">test your page</a> to <b>check if google recognizes your microdata</b>.</p>
+                    </section>
+                    <section>
+                        <p>Look at the microdata example file, to see an example of a document containing a blog post and comments (source: w3c HTML5 specification).</p>
+                        <pre><code data-trim>
+&lt;!DOCTYPE html&gt;
 
-                <section>
-                    <h2>Microdata = SEO ?</h2>
-                    <p>i think so</p>
-                    <p>Google has <a href="http://support.google.com/webmasters/bin/answer.py?hl=en&answer=99170">a very useful page</a> about microdata, at the end of the page are examples of microdata that google recognizes like people or reviews. Go for example to the page reviews and there you will find examples howto use microdata to ensure google uses your data to create rich snippets that will enhance the search results of your site in google results pages.</p>
-                    <p>You can <a href="http://www.google.com/webmasters/tools/richsnippets">test your page</a> to <b>check if google recognizes your microdata</b>.</p>
-                </section>
+&lt;html lang=&quot;en&quot;&gt;
 
-                <section>
-                    <p>Look at the microdata example file, to see an example of a document containing a blog post and comments (source: w3c HTML5 specification).</p>
-                    <pre style="overflow:auto; height: 400px;">
-    &lt;!DOCTYPE html&gt;
+    &lt;head&gt;
 
-    &lt;html lang=&quot;en&quot;&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
 
-        &lt;head&gt;
+        &lt;title&gt;html5 microdata&lt;/title&gt;
 
-            &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;/head&gt;
 
-            &lt;title&gt;html5 microdata&lt;/title&gt;
+    &lt;body&gt;
 
-        &lt;/head&gt;
+        &lt;article itemscope itemtype=&quot;http://schema.org/BlogPosting&quot;&gt;
 
-        &lt;body&gt;
+            &lt;header&gt;
 
-            &lt;article itemscope itemtype=&quot;http://schema.org/BlogPosting&quot;&gt;
+                &lt;h1 itemprop=&quot;headline&quot;&gt;The Very First Rule of Life&lt;/h1&gt;
 
-                &lt;header&gt;
+                &lt;p&gt;&lt;time itemprop=&quot;datePublished&quot; datetime=&quot;2009-10-09&quot;&gt;3 days ago&lt;/time&gt;&lt;/p&gt;
 
-                    &lt;h1 itemprop=&quot;headline&quot;&gt;The Very First Rule of Life&lt;/h1&gt;
+                &lt;link itemprop=&quot;url&quot; href=&quot;?comments=0&quot;&gt;
 
-                    &lt;p&gt;&lt;time itemprop=&quot;datePublished&quot; datetime=&quot;2009-10-09&quot;&gt;3 days ago&lt;/time&gt;&lt;/p&gt;
+            &lt;/header&gt;
 
-                    &lt;link itemprop=&quot;url&quot; href=&quot;?comments=0&quot;&gt;
+            &lt;p&gt;If there's a microphone anywhere near you, assume it's hot and
 
-                &lt;/header&gt;
+            sending whatever you're saying to the world. Seriously.&lt;/p&gt;
 
-                &lt;p&gt;If there's a microphone anywhere near you, assume it's hot and
+            &lt;p&gt;...&lt;/p&gt;
 
-                sending whatever you're saying to the world. Seriously.&lt;/p&gt;
+            &lt;section&gt;
 
-                &lt;p&gt;...&lt;/p&gt;
+                &lt;h1&gt;Comments&lt;/h1&gt;
 
-                &lt;section&gt;
+                &lt;article itemprop=&quot;comment&quot; itemscope itemtype=&quot;http://schema.org/UserComments&quot; id=&quot;c1&quot;&gt;
 
-                    &lt;h1&gt;Comments&lt;/h1&gt;
+                    &lt;link itemprop=&quot;url&quot; href=&quot;#c1&quot;&gt;
 
-                    &lt;article itemprop=&quot;comment&quot; itemscope itemtype=&quot;http://schema.org/UserComments&quot; id=&quot;c1&quot;&gt;
+                    &lt;footer&gt;
 
-                        &lt;link itemprop=&quot;url&quot; href=&quot;#c1&quot;&gt;
+                        &lt;p&gt;Posted by: &lt;span itemprop=&quot;creator&quot; itemscope itemtype=&quot;http://schema.org/Person&quot;&gt;
 
-                        &lt;footer&gt;
+                        &lt;span itemprop=&quot;name&quot;&gt;George Washington&lt;/span&gt;
 
-                            &lt;p&gt;Posted by: &lt;span itemprop=&quot;creator&quot; itemscope itemtype=&quot;http://schema.org/Person&quot;&gt;
+                        &lt;/span&gt;&lt;/p&gt;
 
-                            &lt;span itemprop=&quot;name&quot;&gt;George Washington&lt;/span&gt;
+                        &lt;p&gt;&lt;time itemprop=&quot;commentTime&quot; datetime=&quot;2009-10-10&quot;&gt;15 minutes ago&lt;/time&gt;&lt;/p&gt;
 
-                            &lt;/span&gt;&lt;/p&gt;
+                    &lt;/footer&gt;
 
-                            &lt;p&gt;&lt;time itemprop=&quot;commentTime&quot; datetime=&quot;2009-10-10&quot;&gt;15 minutes ago&lt;/time&gt;&lt;/p&gt;
+                    &lt;p&gt;Yeah! Especially when talking about your lobbyist friends!&lt;/p&gt;
 
-                        &lt;/footer&gt;
+                &lt;/article&gt;
 
-                        &lt;p&gt;Yeah! Especially when talking about your lobbyist friends!&lt;/p&gt;
+                &lt;article itemprop=&quot;comment&quot; itemscope itemtype=&quot;http://schema.org/UserComments&quot; id=&quot;c2&quot;&gt;
 
-                    &lt;/article&gt;
+                    &lt;link itemprop=&quot;url&quot; href=&quot;#c2&quot;&gt;
 
-                    &lt;article itemprop=&quot;comment&quot; itemscope itemtype=&quot;http://schema.org/UserComments&quot; id=&quot;c2&quot;&gt;
+                    &lt;footer&gt;
 
-                        &lt;link itemprop=&quot;url&quot; href=&quot;#c2&quot;&gt;
+                        &lt;p&gt;Posted by: &lt;span itemprop=&quot;creator&quot; itemscope itemtype=&quot;http://schema.org/Person&quot;&gt;
 
-                        &lt;footer&gt;
+                        &lt;span itemprop=&quot;name&quot;&gt;George Hammond&lt;/span&gt;
 
-                            &lt;p&gt;Posted by: &lt;span itemprop=&quot;creator&quot; itemscope itemtype=&quot;http://schema.org/Person&quot;&gt;
+                        &lt;/span&gt;&lt;/p&gt;
 
-                            &lt;span itemprop=&quot;name&quot;&gt;George Hammond&lt;/span&gt;
+                        &lt;p&gt;&lt;time itemprop=&quot;commentTime&quot; datetime=&quot;2009-10-10&quot;&gt;5 minutes ago&lt;/time&gt;&lt;/p&gt;
 
-                            &lt;/span&gt;&lt;/p&gt;
+                    &lt;/footer&gt;
 
-                            &lt;p&gt;&lt;time itemprop=&quot;commentTime&quot; datetime=&quot;2009-10-10&quot;&gt;5 minutes ago&lt;/time&gt;&lt;/p&gt;
+                    &lt;p&gt;Hey, you have the same first name as me.&lt;/p&gt;
 
-                        &lt;/footer&gt;
+                &lt;/article&gt;
 
-                        &lt;p&gt;Hey, you have the same first name as me.&lt;/p&gt;
+            &lt;/section&gt;
 
-                    &lt;/article&gt;
+        &lt;/article&gt;
 
-                &lt;/section&gt;
+    &lt;/body&gt;
 
-            &lt;/article&gt;
-
-        &lt;/body&gt;
-
-    &lt;/html&gt;
-                    </code></pre>
+&lt;/html&gt;
+                        </code></pre>
+                    </section>
                 </section>
 
                 <section>
@@ -1190,52 +1137,50 @@
                 </section>
 
                 <section>
-                    <h2>audio API</h2>
-                    <p>An API for playing audio which can be used with the new audio tag.</p>
-                    <pre style="overflow:auto; height: 220px;">
-    &lt;!DOCTYPE html&gt;
-    &lt;html lang=&quot;en&quot;&gt;
-        &lt;head&gt;
-            &lt;meta charset=&quot;UTF-8&quot;&gt;
-            &lt;title&gt;html5 audio api&lt;/title&gt;
-            &lt;script&gt;
-                function initialze() {
-                    console.log(document.getElementByID('example').duration);
-                    console.log(document.getElementByID('example').currentTime);
-                }
-            &lt;/script&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-            &lt;audio id=&quot;example&quot; controls=&quot;controls&quot; preload=&quot;auto&quot;&gt;
-                &lt;source src=&quot;song.ogg&quot; type=&quot;audio/ogg&quot; /&gt;
-                &lt;source src=&quot;example.mp3&quot; type=&quot;audio/mpeg&quot; /&gt;
-            &lt;/audio&gt;  
-            &lt;div&gt;  
-                &lt;button onclick=&quot;document.getElementById('example').play()&quot;&gt;Play the Audio&lt;/button&gt;  
-                &lt;button onclick=&quot;document.getElementById('example').pause()&quot;&gt;Pause the Audio&lt;/button&gt;  
-                &lt;button onclick=&quot;document.getElementById('example').volume+=0.1&quot;&gt;Increase Volume&lt;/button&gt;  
-                &lt;button onclick=&quot;document.getElementById('example').volume-=0.1&quot;&gt;Decrease Volume&lt;/button&gt;  
-            &lt;/div&gt;
-        &lt;/body&gt;
-    &lt;/html&gt;
-                    </code></pre>
-                    <script>
-                        function initialze() {
-                            console.log(document.getElementByID('example').duration);
-                            console.log(document.getElementByID('example').currentTime);
-                        }
-                    </script>
-                    <audio id="audio_example" controls="controls" preload="auto">
-                        <source src="//upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg" type="audio/ogg" />
-                        <source src="audio/example.mp3" type="audio/mpeg" />
-                    </audio>
-                    <div>  
-                        <button onclick="document.getElementById('audio_example').play()">Play the Audio</button>  
-                        <button onclick="document.getElementById('audio_example').pause()">Pause the Audio</button>  
-                        <button onclick="document.getElementById('audio_example').volume+=0.1">Increase Volume</button>  
-                        <button onclick="document.getElementById('audio_example').volume-=0.1">Decrease Volume</button>  
-                    </div>
-                    <p>A very nice audio library can be found <a href="http://kolber.github.com/audiojs/">on github.</a> Audio.js is a javascript library which fallbacks to flash in older browsers that don't have the HTML5 audio capabilities.</p>
+                    <section>
+                        <h2>audio API</h2>
+                        <p>An API for playing audio which can be used with the new audio tag.</p>
+                        <pre><code data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;html5 audio api&lt;/title&gt;
+        &lt;script&gt;
+            function initialze() {
+                console.log(document.getElementByID('example').duration);
+                console.log(document.getElementByID('example').currentTime);
+            }
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;audio id=&quot;example&quot; controls=&quot;controls&quot; preload=&quot;auto&quot;&gt;
+            &lt;source src=&quot;song.ogg&quot; type=&quot;audio/ogg&quot; /&gt;
+            &lt;source src=&quot;example.mp3&quot; type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/audio&gt;  
+        &lt;div&gt;  
+            &lt;button onclick=&quot;document.getElementById('example').play()&quot;&gt;Play the Audio&lt;/button&gt;  
+            &lt;button onclick=&quot;document.getElementById('example').pause()&quot;&gt;Pause the Audio&lt;/button&gt;  
+            &lt;button onclick=&quot;document.getElementById('example').volume+=0.1&quot;&gt;Increase Volume&lt;/button&gt;  
+            &lt;button onclick=&quot;document.getElementById('example').volume-=0.1&quot;&gt;Decrease Volume&lt;/button&gt;  
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <audio id="audio_example" controls="controls" preload="auto">
+                            <source src="audio/Example.ogg" type="audio/ogg" />
+                            <source src="audio/Yah rly.mp3" type="audio/mpeg" />
+                        </audio>
+                        <div>  
+                            <button onclick="document.getElementById('audio_example').play()">Play the Audio</button>  
+                            <button onclick="document.getElementById('audio_example').pause()">Pause the Audio</button>  
+                            <button onclick="document.getElementById('audio_example').volume+=0.1">Increase Volume</button>  
+                            <button onclick="document.getElementById('audio_example').volume-=0.1">Decrease Volume</button>  
+                        </div>
+                        <p>A very nice audio library can be found <a href="http://kolber.github.com/audiojs/">on github.</a> Audio.js is a javascript library which fallbacks to flash in older browsers that don't have the HTML5 audio capabilities.</p>
+                    </section>
                 </section>
 
                 <section>
@@ -1255,12 +1200,16 @@
                 </section>
 
                 <section>
-                    <h2>history API (hashchange)</h2>
-                    <p>API that exposes the history and allows pages to add to it to <b>prevent breaking the back button</b>. </p>
-                    <p>This new API is especially useful, if for example you use <b>Ajax</b> to retrieve a list of news and the <b>user changes the filters</b> and then he bookmarks the page. When he comes back, everything is reset and he sees the default news list again. But if you change the URI using the history API while he changes the filter options to save their state in the url and he then bookmarks the page, every time he comes back the filters will be set to the values he had selected when making the bookmark.</p>
-                    <p>An impressive example of the history API, is <b>github</b>, check out how github only reloads the content area of the page and changes the url without reloading the whole page. jQuery Mobile also uses the history API, jQuery Mobile loads new pages using Ajax, adds those pages to the DOM and then changes the url.</p>
-                    <p>As like other html5 APIs there is a <b>javascript library polyfill</b> for history, <a href="https://github.com/balupton/History.js">named history.js</a>, it also supports older browser's by using the hash as fallback method</p>
-                    <p>try this <a href="http://html5demos.com/history">history api example</a></p>
+                    <section>
+                        <h2>history API (hashchange)</h2>
+                        <p>API that exposes the history and allows pages to add to it to <b>prevent breaking the back button</b>. </p>
+                        <p>This new API is especially useful, if for example you use <b>Ajax</b> to retrieve a list of news and the <b>user changes the filters</b> and then he bookmarks the page. When he comes back, everything is reset and he sees the default news list again. But if you change the URI using the history API while he changes the filter options to save their state in the url and he then bookmarks the page, every time he comes back the filters will be set to the values he had selected when making the bookmark.</p>
+                    </section>
+                    <section>
+                        <p>An impressive example of the history API, is <b>github</b>, check out how github only reloads the content area of the page and changes the url without reloading the whole page. jQuery Mobile also uses the history API, jQuery Mobile loads new pages using Ajax, adds those pages to the DOM and then changes the url.</p>
+                        <p>As like other html5 APIs there is a <b>javascript library polyfill</b> for history, <a href="https://github.com/balupton/History.js">named history.js</a>, it also supports older browser's by using the hash as fallback method</p>
+                        <p>try this <a href="http://html5demos.com/history">history api example</a></p>
+                    </section>
                 </section>
 
                 <section>
@@ -1276,19 +1225,19 @@
                     <p>The geolocation API allow you to <b>locate users</b>. The techniques for geolocation vary depending on which technique is available, <b>GSM triangulation, GPS localization, WiFi triangulation or IP geolocation via a database</b>.</p>
                     <p>With the <b>watchPosition</b> function you can track users, if the position changes the <b>callback will be executed</b>. To stop watching geolocation changes you call clearWatch.</p>
                     <p><a href="http://dev.w3.org/geo/api/spec-source.html">Geolocation API</a> w3c page</p>
-                    <p>you can try this <a href="geolocation/geolocation.html">geolocation api example</a></p>
+                    <p>you can try this <a href="examples/geolocation/geolocation.html">geolocation api example</a></p>
                 </section>
 
                 <section>
                     <h2>web workers API</h2>
                     <p>Web workers allow you to put <b>heavy tasks</b> like calculations in threads, to make them run in the <b>background</b> and therefore don't make the user wait for them to finish. You can listen to web workers and get a notice when their work is done.</p>
                     <pre><code data-trim>
-    &lt;script&gt;
-        var worker = new Worker('worker.js');
-        worker.onmessage = function (event) {
-            document.getElementById('result').textContent = event.data;
-        };
-    &lt;/script&gt;
+&lt;script&gt;
+    var worker = new Worker('worker.js');
+    worker.onmessage = function (event) {
+        document.getElementById('result').textContent = event.data;
+    };
+&lt;/script&gt;
                     </code></pre>
                     <p>The w3c <a href="http://dev.w3.org/html5/workers/">web workers editors draft</a> which already had some good examples to get started</p>
                     <p>A very good article about web workers can be found on <a href="http://www.html5rocks.com/en/tutorials/workers/basics/">html5rocks</a> and another one can be found on <a href="https://developer.mozilla.org/En/Using_web_workers">the mozilla developer zone</a></p>
@@ -1296,51 +1245,57 @@
 
 
                 <section>
-                    <h2>offline mode API</h2>
-                    <p>Another html5 feature is the offline ode which allows you to make your website available offline. This can be useful for <b>mobile users</b>.</p>
-                    <p>To use the offline mode you need create a <b>manifest file</b> and add a the manifest attribute to the html tag of your page, the manifest attribute value is the path to your manifest file.</p>
-                    <pre><code data-trim>
-    &lt;html lang=&quot;en&quot; manifest=&quot;my.manifest&quot;&gt;
-                    </code></pre>
-                    <p>More informations about the manifest can be found in the <a href="https://developer.mozilla.org/en/Offline_resources_in_Firefox">mozilla developer zone</a> and on <a href="http://www.html5rocks.com/en/tutorials/appcache/beginner/">html5rocks</a></p>
-                    <img src="lightbulb.png" style="float: left;"><blockquote>From w3c: If the manifest's scheme is https: or another scheme intended for encrypted data transfer, then all URLs in explicit sections must have the same origin as the manifest itself.</blockquote>
-                </section>
+                    <section>
+                        <h2>application cache (offline mode API)</h2>
+                        <p>Another html5 feature is the offline ode which allows you to make your website available offline. This can be useful for <b>mobile users</b>.</p>
+                        <p>To use the offline mode you need create a <b>manifest file</b> and add a the manifest attribute to the html tag of your page, the manifest attribute value is the path to your manifest file.</p>
+                        <pre><code data-trim>
+&lt;html lang=&quot;en&quot; manifest=&quot;my.manifest&quot;&gt;
+                        </code></pre>
+                        <p>More informations about the manifest can be found in the <a href="https://developer.mozilla.org/en/Offline_resources_in_Firefox">mozilla developer zone</a> and on <a href="http://www.html5rocks.com/en/tutorials/appcache/beginner/">html5rocks</a></p>
+                    </section>
+                    <section>
+                        <img src="images/lightbulb.png" style="float: left;">
+                        <blockquote>
+                            From w3c: If the manifest's scheme is https: or another scheme intended for encrypted data transfer, then all URLs in explicit sections must have the same origin as the manifest itself.
+                        </blockquote>
+                        <pre><code data-trim>
+CACHE MANIFEST
+# 2012-0-22:v3.1
 
-                <section>
-                    <pre style="overflow:auto; height: 200px;">
-    CACHE MANIFEST
-    # 2012-0-22:v3.1
+CACHE:
+/favicon.ico
+index.html
+stylesheet.css
+images/logo.png
 
-    CACHE:
-    /favicon.ico
-    index.html
-    stylesheet.css
-    images/logo.png
+NETWORK:
+chat.js
+http://google-analytics.com/ga.js
 
-    NETWORK:
-    chat.js
-    http://google-analytics.com/ga.js
-
-    FALLBACK:
-    /login login.html
-                    </code></pre>
-                    <p>The manifest file has three sections.</p>
-                    <p><b>NETWORK</b> is for resources that you don't want to make available offline like a javascript file used to do track user statistics.</p>
-                    <p><b>CACHE</b> is a list of all the files you want to make available offline.</p>
-                    <p><b>FALLBACK</b> a list of files that were available online like a login page which you want to replace by a special offline version of that page.</p>
-                    <p>While downloading the files listed in your manifest your browser will fire out progress events you can listen to and which tell you how much files have already been downloaded. It will fire even more events when download starts, finishes or noupdate if nothing new got downloaded because all files are already in your browser cache.</p>
+FALLBACK:
+/login login.html
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>The manifest file has three sections.</p>
+                        <p><b>NETWORK</b> is for resources that you don't want to make available offline like a javascript file used to do track user statistics.</p>
+                        <p><b>CACHE</b> is a list of all the files you want to make available offline.</p>
+                        <p><b>FALLBACK</b> a list of files that were available online like a login page which you want to replace by a special offline version of that page.</p>
+                        <p>While downloading the files listed in your manifest your browser will fire out progress events you can listen to and which tell you how much files have already been downloaded. It will fire even more events when download starts, finishes or noupdate if nothing new got downloaded because all files are already in your browser cache.</p>
+                    </section>
                 </section>
 
                 <section>
                     <h2>local storage API</h2>
                     <p>The local storage allow you to <b>save key / value pairs</b> locally in your browser. Those informations <b>persist</b> even if the user closes his browser. Those informations can not be read by another website that is hosted on another domain because of the same origin policy. Unlike cookies the information in the storage never gets transmitted to the server.</p>
                     <pre><code data-trim>
-    localStorage.length;
-    localStorage.key(n);
-    localStorage.getItem(key);
-    localStorage.setItem(key,data);
-    localStorage.removeItem(key);
-    localStorage.clear();
+localStorage.length;
+localStorage.key(n);
+localStorage.getItem(key);
+localStorage.setItem(key,data);
+localStorage.removeItem(key);
+localStorage.clear();
                     </code></pre>
                 </section>
 
@@ -1348,25 +1303,29 @@
                     <h2>session storage API</h2>
                     <p>The session storage is like the local storage but the data <b>doesn't persist</b> if the user closes his browser.</p>
                     <pre><code data-trim>
-    var cnt = sessionStorage.length;
-    sessionStorage.key(n);
-    sessionStorage.getItem(key);
-    sessionStorage.setItem(key,data);
-    sessionStorage.removeItem(key);
-    sessionStorage.clear();
+var cnt = sessionStorage.length;
+sessionStorage.key(n);
+sessionStorage.getItem(key);
+sessionStorage.setItem(key,data);
+sessionStorage.removeItem(key);
+sessionStorage.clear();
                     </code></pre>
                 </section>
 
                 <section>
-                    <h2>file API / filesystem API</h2>
-                    <p>Using the fileapi you can now <b>listen to the progress</b> events and display the progress to users using a progress bar. You can <b>preview images before they get uploaded</b>. You can even <b>create files</b>, for example you can create <b>thumbnails</b> of images even before the user clicks the upload button.</p>
-                    <pre style="overflow:auto; height: 50px;">
-    &lt;input type=&quot;file&quot; id=&quot;input&quot; multiple onchange=&quot;handleFiles(this.files)&quot;&gt;
-                    </code></pre>
-                    <p>The w3c html5 <a href="http://www.w3.org/TR/FileAPI/">file API</a> draft and here is the <a href="http://www.html5rocks.com/en/tutorials/file/filesystem/">filesystem API w3c page</a>.</p>
-                    <p>Lots of informations and code examples can be found on the <a href="https://developer.mozilla.org/en/Using_files_from_web_applications">mozilla developer zone</a>.</p>
-                    <p>Here is a <a href="http://html5demos.com/file-api">file upload drag and drop demo</a> and html5rocks has an article that <a href="http://www.html5rocks.com/en/tutorials/file/dndfiles/">explains howto use the file api and create a drag and drop upload field</a>.</p>
-                    <p>Yet again on html5rocks is a very good article about the <a href="http://www.html5rocks.com/en/tutorials/file/filesystem/">filesystem API</a>.</p>
+                    <section>
+                        <h2>file API / filesystem API</h2>
+                        <p>Using the fileapi you can now <b>listen to the progress</b> events and display the progress to users using a progress bar. You can <b>preview images before they get uploaded</b>. You can even <b>create files</b>, for example you can create <b>thumbnails</b> of images even before the user clicks the upload button.</p>
+                        <pre><code data-trim>
+&lt;input type=&quot;file&quot; id=&quot;input&quot; multiple onchange=&quot;handleFiles(this.files)&quot;&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>The w3c html5 <a href="http://www.w3.org/TR/FileAPI/">file API</a> draft and here is the <a href="http://www.html5rocks.com/en/tutorials/file/filesystem/">filesystem API w3c page</a>.</p>
+                        <p>Lots of informations and code examples can be found on the <a href="https://developer.mozilla.org/en/Using_files_from_web_applications">mozilla developer zone</a>.</p>
+                        <p>Here is a <a href="http://html5demos.com/file-api">file upload drag and drop demo</a> and html5rocks has an article that <a href="http://www.html5rocks.com/en/tutorials/file/dndfiles/">explains howto use the file api and create a drag and drop upload field</a>.</p>
+                        <p>Yet again on html5rocks is a very good article about the <a href="http://www.html5rocks.com/en/tutorials/file/filesystem/">filesystem API</a>.</p>
+                    </section>
                 </section>
 
                 <section>
@@ -1376,53 +1335,64 @@
                 </section>
 
                 <section>
-                    <h2>webRTC / getUserMedia() API</h2>
-                    <p>getUserMedia() or the prefixed webkit version webkitGetUserMedia() also called the device API, is a function that will allow us to build great web apps in the future, but it's not part of HTML5. A good source of informations is the <a href="http://dev.w3.org/2011/webrtc/editor/getusermedia.html">webRTC w3c editors draft</a></p>
-                    <p>getUserMedia() can be used to access the users webcam, the video stream can be displayed in a canvas element and therefore be modified in real time using canvas functionality. <a href="http://dev.opera.com/articles/view/playing-with-html5-video-and-getusermedia-support/">Opera is the has a nice example</a>.</p>
-                    <p>The <a href="http://www.w3.org/TR/webrtc/">w3c editors draft can be found here</a>.</p>
-                    <pre style="overflow:auto; height: 150px;">
-    // Replace the source of the video element with the stream from the camera
-    var video = document.getElementById('sourcevid');
-    if (navigator.getUserMedia) {
-        navigator.getUserMedia('video', successCallback, errorCallback);
-        function successCallback(stream) {
-            video.src = stream;
-        }
-        function errorCallback(error) {
-            console.error('An error occurred: [CODE ' + error.code + ']');
-            return;
-        }
-    } else {
-        console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
+                    <section>
+                        <h2>webRTC / getUserMedia() API</h2>
+                        <p>getUserMedia() or the prefixed webkit version webkitGetUserMedia() also called the device API, is a function that will allow us to build great web apps in the future, but it's not part of HTML5. A good source of informations is the <a href="http://dev.w3.org/2011/webrtc/editor/getusermedia.html">webRTC w3c editors draft</a></p>
+                        <p>getUserMedia() can be used to access the users webcam, the video stream can be displayed in a canvas element and therefore be modified in real time using canvas functionality. <a href="http://dev.opera.com/articles/view/playing-with-html5-video-and-getusermedia-support/">Opera is the has a nice example</a>.</p>
+                    </section>
+                    <section>
+                        <p>The <a href="http://www.w3.org/TR/webrtc/">w3c editors draft can be found here</a>.</p>
+                        <pre><code data-trim>
+// Replace the source of the video element with the stream from the camera
+var video = document.getElementById('sourcevid');
+if (navigator.getUserMedia) {
+    navigator.getUserMedia('video', successCallback, errorCallback);
+    function successCallback(stream) {
+        video.src = stream;
+    }
+    function errorCallback(error) {
+        console.error('An error occurred: [CODE ' + error.code + ']');
         return;
     }
-                    </code></pre>
-                    <img src="lightbulb.png" style="float: left;"><blockquote>With the <a href="http://www.webrtc.org/">webRTC</a> standard you could easly create a web app like chat-roulette.</blockquote>
+} else {
+    console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
+    return;
+}
+                        </code></pre>
+                        <img src="images/lightbulb.png" style="float: left;">
+                        <blockquote>
+                            With the <a href="http://www.webrtc.org/">webRTC</a> standard you could easly create a web app like chat-roulette.
+                        </blockquote>
+                    </section>
                 </section>
 
                 <section>
                     <h2>query selectors</h2>
                     <p>With html4 you could use getElementById , now with html5 you can the two newcomers querySelector and querySelectorAll</p>
                     <pre><code data-trim>
-    var domNode = document.querySelector('.classA', '.classB');
-    var domNodes = document.querySelectorAll('.classA', '.classB');
+var domNode = document.querySelector('.classA', '.classB');
+var domNodes = document.querySelectorAll('.classA', '.classB');
                     </code></pre>
                 </section>
 
                 <section>
-                    <h2>web sockets</h2>
-                    <p>Web sockets allow you to build a <b>bi-directional communication</b> channel to a socket of your server. That connection stays open for as long as you want, you can send data as often as needed to the server. The server can push answers to the client every time he wants, the server doesn't need to wait for the client to ask something.</p>
-                    <p>An application that needs such a feature is a chat. An ajax chat would have to check every second if there is a new message an the server that got written by another user using an ajax request. With web sockets all you need to do is open a connection and <b>wait for incoming messages</b> by the server.</p>
-                    <pre style="overflow:auto; height: 150px;">
+                    <section>
+                        <h2>web sockets</h2>
+                        <p>Web sockets allow you to build a <b>bi-directional communication</b> channel to a socket of your server. That connection stays open for as long as you want, you can send data as often as needed to the server. The server can push answers to the client every time he wants, the server doesn't need to wait for the client to ask something.</p>
+                        <p>An application that needs such a feature is a chat. An ajax chat would have to check every second if there is a new message an the server that got written by another user using an ajax request. With web sockets all you need to do is open a connection and <b>wait for incoming messages</b> by the server.</p>
+                    </section>
+                    <section>
+                        <pre><code data-trim>
     &lt;script&gt;
         conn = new WebSocket('ws://nodejs.example.com:9999');    
         conn.onmessage = function (event) {
             var message = event.data; 
         }
     &lt;/script&gt;
-                    </code></pre>
+                        </code></pre>
 
-                    <p>The <a href="http://dev.w3.org/html5/websockets/">web sockets</a> specification from w3c. There are also two interesting articles on the <a href="https://developer.mozilla.org/en/WebSockets">mozilla developer zone</a> and <a href="http://www.html5rocks.com/en/tutorials/websockets/basics/">html5rocks</a> and a demo can be found on <a href="http://html5demos.com/web-socket">html5demos.com</a>.</p>
+                        <p>The <a href="http://dev.w3.org/html5/websockets/">web sockets</a> specification from w3c. There are also two interesting articles on the <a href="https://developer.mozilla.org/en/WebSockets">mozilla developer zone</a> and <a href="http://www.html5rocks.com/en/tutorials/websockets/basics/">html5rocks</a> and a demo can be found on <a href="http://html5demos.com/web-socket">html5demos.com</a>.</p>
+                    </section>
                 </section>
 
                 <section>
@@ -1432,31 +1402,39 @@
                 </section>
 
                 <section>
-                    <h2>XMLHttpRequest (Level2)</h2>
-                    <p>Your right if you think that xmlhttprequest are nothing new, the news is the level2 suffix.</p>
-                    <p><b>The most important new advantages of xhr2 are a standardized technique, xhr file transfer (ajax file upload) and cross domain xhr requests.</b></p>
-                    <pre style="overflow:auto; height: 200px;">
-    &lt;script&gt;
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://www.example.com/hello.json');
-        xhr.onload = function(e) {
-            var data = JSON.parse(this.response);
-        }
-        xhr.send();
-    &lt;/script&gt;
-                    </code></pre>
-                    <p>The w3c <a href="http://www.w3.org/TR/2012/WD-XMLHttpRequest-20120117/">xmlhttprequest</a> working draft.</p>
-                    <p>A good article about the xhr2 can be found on <a href="http://www.html5rocks.com/en/tutorials/file/xhr2/">html5rocks</a> with examples for file uploads using xhr, sending data to the server and even howto request data from a different origin.</p>
+                    <section>
+                        <h2>XMLHttpRequest (Level2)</h2>
+                        <p>Your right if you think that xmlhttprequest are nothing new, the news is the level2 suffix.</p>
+                        <p><b>The most important new advantages of xhr2 are a standardized technique, xhr file transfer (ajax file upload) and cross domain xhr requests.</b></p>
+                    </section>
+                    <section>
+                        <pre><code data-trim>
+&lt;script&gt;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://www.example.com/hello.json');
+    xhr.onload = function(e) {
+        var data = JSON.parse(this.response);
+    }
+    xhr.send();
+&lt;/script&gt;
+                        </code></pre>
+                        <p>The w3c <a href="http://www.w3.org/TR/2012/WD-XMLHttpRequest-20120117/">xmlhttprequest</a> working draft.</p>
+                        <p>A good article about the xhr2 can be found on <a href="http://www.html5rocks.com/en/tutorials/file/xhr2/">html5rocks</a> with examples for file uploads using xhr, sending data to the server and even howto request data from a different origin.</p>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>contenteditable attribute</h2>
-                    <p>This new feature allows you make elements editable, like a div containing some text.</p>
-                    <p>The <a href="http://www.w3.org/TR/html5/editing.html#attr-contenteditable">w3c's description</a> of this new feature. A very good article about <a href="http://html5doctor.com/the-contenteditable-attribute/">contenteditable</a> can be found at html5doctor. A small demo can be found on this <a href="http://html5demos.com/contenteditable">page</a>.</p>
-                    <p>You may wonder for what this is usefull, if we already have forms or what you should done after then content got edited. I think the idea is to <b>listen to changes</b> using javascript, for example for keypress events on the contenteditable div and then send those changes to the <b>server</b> by using ajax. You could also record changes using javascript and then do some <b>interaction</b> with another page content or some other fancy things using javascript.</p>
-                    <pre style="overflow:auto; height: 50px;">
-    &lt;div contenteditable=true&gt;example&lt;/div&gt;
-                    </code></pre>
+                    <section>
+                        <h2>contenteditable attribute</h2>
+                        <p>This new feature allows you make elements editable, like a div containing some text.</p>
+                        <p>The <a href="http://www.w3.org/TR/html5/editing.html#attr-contenteditable">w3c's description</a> of this new feature. A very good article about <a href="http://html5doctor.com/the-contenteditable-attribute/">contenteditable</a> can be found at html5doctor. A small demo can be found on this <a href="http://html5demos.com/contenteditable">page</a>.</p>
+                    </section>
+                    <section>
+                        <p>You may wonder for what this is usefull, if we already have forms or what you should done after then content got edited. I think the idea is to <b>listen to changes</b> using javascript, for example for keypress events on the contenteditable div and then send those changes to the <b>server</b> by using ajax. You could also record changes using javascript and then do some <b>interaction</b> with another page content or some other fancy things using javascript.</p>
+                        <pre><code data-trim>
+&lt;div contenteditable=true&gt;example&lt;/div&gt;
+                        </code></pre>
+                    </section>
                 </section>
 
                 <section>
@@ -1475,10 +1453,18 @@
                 </section>
 
                 <section>
-                    <h2>webSQL</h2>
-                    <p>This API is not active anymore, if you want more details take a look at the <a href="http://www.w3.org/TR/webdatabase/">w3c webdatabase specification</a>.</p>
-                    <p>The w3c decided to stop working on this specification because of a lack of different implementation ways. Every vendor that supported it used SQLite as the backend. Therefore the w3c was unable to test different implementations and stopped the working group. Which in my opinion is very sad for the web, but i don't blame anyone because i can understand why the w3c stopped their work and i can understand the browser vendors for all choosing SQLite as backend, writing and supporting an own backend can be a lot of work.</p>
-                    <img src="lightbulb.png" style="float: left;"><blockquote>Beware. This specification is no longer in active maintenance and the Web Applications Working Group does not intend to maintain it further.</blockquote>
+                    <section>
+                        <h2>webSQL</h2>
+                        <p>This API is not active anymore, if you want more details take a look at the <a href="http://www.w3.org/TR/webdatabase/">w3c webdatabase specification</a>.</p>
+                        <p>The w3c decided to stop working on this specification because of a lack of different implementation ways. Every vendor that supported it used SQLite as the backend. Therefore the w3c was unable to test different implementations and stopped the working group.</p>
+                    </section>
+                    <section>
+                        <p>In my opinion is very sad for the web not to have something like an SQL Database in the browser, but i don't blame anyone because i can understand why the w3c stopped their work and i can understand the browser vendors for all choosing SQLite as backend, writing and supporting an own backend can be a lot of work.</p>
+                        <img src="images/lightbulb.png" style="float: left;" alt="">
+                        <blockquote>
+                            Beware. This specification is no longer in active maintenance and the Web Applications Working Group does not intend to maintain it further.
+                        </blockquote>
+                    </section>
                 </section>
 
                 <section>
@@ -1489,273 +1475,290 @@
                 <section>
                     <h2>CSS3</h2>
                     <p>There are a lot of new and exciting things going on in the CSS3 world, i won't present you all, but here are some i like a lot.</p>
-                    <img src="CSS3.png" style="margin: auto; display: block; height: 200px;" />
+                    <img src="images/CSS3.png" style="margin: auto; display: block; height: 200px;" alt="" />
                     <p>If you want to use CSS3 stuff today and still want to support IE, you will have to use polyfills like the next two, CSS3 PIE to get support for box-shadow, border-radius, multiple-backgrounds, gradients and more in IE6-9 and selectivizr to get css3 selectors support in IE6-8.</p>
                 </section>
 
                 <section>
-                    <h2>RGBA</h2>
-                    <p>RGB colors were already part of previous CSS versions, but what's new in CSS3 is that you can now also specify the alpha value. This value controls the opacity of a color, where 1 is fully opaque (visible) and 0 totally invisible (transparent).</p>
-                    <pre style="overflow:auto; height: 200px;">
-    &lt;style&gt;
-        p { background-color: rgba(255, 0, 0, 0.2); position: absolute; left: 50px; width: 100px; height: 300px; z-index: 2; }
-        div { background-color: rgba(0, 0, 255, 0.5); position: absolute; top: 50px; width: 300px; height: 100px; z-index: 3; }
-        span { background-color: rgba(0, 255, 0, 0.8); position: absolute; top: 200px; width: 300px; height: 100px; z-index: 1; }
-    &lt;/style&gt;
-                    </code></pre>
+                    <section>
+                        <h2>RGBA</h2>
+                        <p>RGB colors were already part of previous CSS versions, but what's new in CSS3 is that you can now also specify the alpha value. This value controls the opacity of a color, where 1 is fully opaque (visible) and 0 totally invisible (transparent).</p>
+                        <pre><code data-trim>
+&lt;style&gt;
+    p { background-color: rgba(255, 0, 0, 0.2); position: absolute; left: 50px; width: 100px; height: 300px; z-index: 2; }
+    div { background-color: rgba(0, 0, 255, 0.5); position: absolute; top: 50px; width: 300px; height: 100px; z-index: 3; }
+    span { background-color: rgba(0, 255, 0, 0.8); position: absolute; top: 200px; width: 300px; height: 100px; z-index: 1; }
+&lt;/style&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <iframe src="examples/rgba/rgba.html" width="800" height="600"></iframe>
+                    </section>
                 </section>
 
                 <section>
-                    <iframe src="rgba/rgba.html"></iframe>
+                    <section>
+                        <h2>text-shadow</h2>
+                        <p>This is a nice addition to the growing list of CSS features, it adds a nice background effect to your text.</p>
+                        <p>x-coordinate, y-coordinate, blur radius, color</p>
+                        <pre><code data-trim>
+&lt;style&gt;
+    p { text-shadow: 1px 1px 0px #b7d0de, 1px 2px 0px #9595a6; font-size: 26px; }
+    div { text-shadow: 2px 2px 2px black; font-size: 26px; }
+&lt;/style&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <iframe src="examples/text_shadow/text_shadow.html" width="800" height="600"></iframe>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>text-shadow</h2>
-                    <p>This is a nice addition to the growing list of CSS features, it adds a nice background effect to your text.</p>
-                    <p>x-coordinate, y-coordinate, blur radius, color</p>
-                    <pre style="overflow:auto; height: 180px;">
-    &lt;style&gt;
-        p { text-shadow: 1px 1px 0px #b7d0de, 1px 2px 0px #9595a6; font-size: 26px; }
-        div { text-shadow: 2px 2px 2px black; font-size: 26px; }
-    &lt;/style&gt;
-                    </code></pre>
+                    <section>
+                        <h2>box-shadow</h2>
+                        <p>Same as text-shadow but for boxes ;)</p>
+                        <p>x-coordinate, y-coordinate, blur radius, color</p>
+                        <pre><code data-trim>
+&lt;style&gt;
+    div { box-shadow: 5px 5px 7px #f2af2a; border: 1px solid #f2af2a; width: 100px; height: 100px; margin: 50px; }
+&lt;/style&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <iframe src="examples/box_shadow/box_shadow.html" width="800" height="600"></iframe>
+                    </section>
                 </section>
 
                 <section>
-                    <iframe src="text_shadow/text_shadow.html"></iframe>
+                    <section>
+                        <h2>gradients</h2>
+                        <p>gradients made with CSS, no need to create an image in gimp anymore.</p>
+                        <p>For linear gradients you define a direction or angle, the start color and an unlimited number of stop colors. Optionally you can also define a length per color (with the length you can change the natural position where a color would start by a value you think is better, in percent).</p>
+                        <p>For radial gradients the syntax is similar but slightly more complex, first you define a position where the gradient should start, second parameter is the type of shape (circle or ellipse) and optionally it's size (closest-side, farthest-side, closest-corner, farthest-corner), then like for linear gradients an unlimited number of color stops.</p>
+                    </section>
+                    <section>
+                        <p>Radial and linear gradients can also repeat their colors indefinitely, by using the repeating gradients functions for either repeating linear or radial gradients.</p>
+                        <p>Nice write-ups for gradients can be found on <a href="http://www.impressivewebs.com/css3-radial-gradient-syntax/">impressive webs</a> and on <a href="http://www.css3files.com/gradient/">css3files.com</a>.</p>
+                        <p>Here is a nice tool that let's you play with gradients to help you quickly find the gradient you want to use: http://gradients.glrzad.com/ or http://www.colorzilla.com/gradient-editor/.</p>
+                        <p><a href="http://dev.w3.org/csswg/css3-images/#linear-gradients">The w3c draft for gradients</a> is a good source of information.</p>
+                        <p>Using the radial gradient for the body background was tricky, a good solution can be found in a <a href="http://stackoverflow.com/questions/2869212/css3-gradient-background-set-on-body-doesnt-stretch-but-instead-repeats">stackoverflow post</a>.</p>
+                    </section>
+                    <section>
+                        <pre><code data-trim>
+&lt;style&gt;
+    html {
+        height: 100%;
+    }
+    body { 
+        background-image: -webkit-radial-gradient(center, circle closest-side, yellow, blue);
+        background-image: -moz-radial-gradient(center, circle closest-side, yellow, blue);
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+&lt;/style&gt;
+                        </code></pre>
+                        <pre><code data-trim>
+&lt;style&gt;
+    body { 
+        background-image: -webkit-linear-gradient(top left, yellow, blue);
+        background-image: -moz-linear-gradient(top left, yellow, blue);
+    }
+&lt;/style&gt;
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <iframe src="examples/gradients/basic-linear.html" width="800" height="600"></iframe>
+                    </section>
+
+                    <section>
+                        <iframe src="examples/gradients/basic-radial.html" width="800" height="600"></iframe>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>box-shadow</h2>
-                    <p>Same as text-shadow but for boxes ;)</p>
-                    <p>x-coordinate, y-coordinate, blur radius, color</p>
-                    <pre style="overflow:auto; height: 150px;">
-    &lt;style&gt;
-        div { box-shadow: 5px 5px 7px #f2af2a; border: 1px solid #f2af2a; width: 100px; height: 100px; margin: 50px; }
-    &lt;/style&gt;
-                    </code></pre>
+                    <section>
+                        <h2>font-face</h2>
+                        <p>Font face allows you to embed fonts that are not yet on the users computer. Finally you can use whatever font you want in your web-pages, define an source for the font, if the user doesn't have that font the browser will download it from your server.</p>
+                        <p>Google made <a href="http://www.google.com/webfonts">a portal</a> with lots of free web fonts.</p>
+                        <p>Together with typekit google developed <a href="https://developers.google.com/webfonts/docs/webfont_loader">the font loader</a>, which makes embedding fonts really easy and allow you to download the fonts asynchronously.</p>
+                        <pre><code data-trim>
+&lt;style&gt;
+    @font-face {
+        font-family: 'Shojumaru';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Shojumaru'), local('Shojumaru-Regular'), url(https://themes.googleusercontent.com/static/fonts/shojumaru/v2/pYVcIM206l3F7GUKEvtB3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+    }
+    p {
+        font-family: 'Shojumaru', cursive;
+        font-size: 36px;
+    }
+&lt;/style&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <iframe src="examples/font_face/font_face.html" width="400" height="400"></iframe>
+                    </section>
                 </section>
 
                 <section>
-                    <iframe src="box_shadow/box_shadow.html"></iframe>
-                </section>
-
-                <section>
-                    <h2>gradients</h2>
-                    <p>gradients made with CSS, no need to create an image in gimp anymore.</p>
-                    <p>For linear gradients you define a direction or angle, the start color and an unlimited number of stop colors. Optionally you can also define a length per color (with the length you can change the natural position where a color would start by a value you think is better, in percent).</p>
-                    <p>For radial gradients the syntax is similar but slightly more complex, first you define a position where the gradient should start, second parameter is the type of shape (circle or ellipse) and optionally it's size (closest-side, farthest-side, closest-corner, farthest-corner), then like for linear gradients an unlimited number of color stops.</p>
-                </section>
-
-                <section>
-                    <p>Radial and linear gradients can also repeat their colors indefinitely, by using the repeating gradients functions for either repeating linear or radial gradients.</p>
-                    <p>Nice write-ups for gradients can be found on <a href="http://www.impressivewebs.com/css3-radial-gradient-syntax/">impressive webs</a> and on <a href="http://www.css3files.com/gradient/">css3files.com</a>.</p>
-                    <p>Here is a nice tool that let's you play with gradients to help you quickly find the gradient you want to use: http://gradients.glrzad.com/ or http://www.colorzilla.com/gradient-editor/.</p>
-                    <p><a href="http://dev.w3.org/csswg/css3-images/#linear-gradients">The w3c draft for gradients</a> is a good source of information.</p>
-                    <p>Using the radial gradient for the body background was tricky, a good solution can be found in a <a href="http://stackoverflow.com/questions/2869212/css3-gradient-background-set-on-body-doesnt-stretch-but-instead-repeats">stackoverflow post</a>.</p>
-                </section>
-
-                <section>
-                    <pre style="overflow:auto; height: 300px;">
-    &lt;style&gt;
-        html {
-            height: 100%;
-        }
-        body { 
-            background-image: -webkit-radial-gradient(center, circle closest-side, yellow, blue);
-            background-image: -moz-radial-gradient(center, circle closest-side, yellow, blue);
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-                    </code></pre>
-                    <pre style="overflow:auto; height: 220px;">
-    &lt;style&gt;
-        body { 
-            background-image: -webkit-linear-gradient(top left, yellow, blue);
-            background-image: -moz-linear-gradient(top left, yellow, blue);
-        }
-    &lt;/style&gt;
-                    </code></pre>
-                </section>
-
-                <section>
-                    <iframe src="gradients/basic-linear.html"></iframe>
-                </section>
-
-                <section>
-                    <iframe src="gradients/basic-radial.html"></iframe>
-                </section>
-
-                <section>
-                    <h2>font-face</h2>
-                    <p>Font face allows you to embed fonts that are not yet on the users computer. Finally you can use whatever font you want in your web-pages, define an source for the font, if the user doesn't have that font the browser will download it from your server.</p>
-                    <p>Google made <a href="http://www.google.com/webfonts">a portal</a> with lots of free web fonts.</p>
-                    <p>Together with typekit google developed <a href="https://developers.google.com/webfonts/docs/webfont_loader">the font loader</a>, which makes embedding fonts really easy and allow you to download the fonts asynchronously.</p>
-                    <pre style="overflow:auto; height: 260px;">
-    &lt;style&gt;
-        @font-face {
-            font-family: 'Shojumaru';
-            font-style: normal;
-            font-weight: 400;
-            src: local('Shojumaru'), local('Shojumaru-Regular'), url('http://themes.googleusercontent.com/static/fonts/shojumaru/v1/pYVcIM206l3F7GUKEvtB3T8E0i7KZn-EPnyo3HZu7kw.woff') format('woff');
-        }
-        p {
-            font-family: 'Shojumaru', cursive;
-            font-size: 36px;
-        }
-    &lt;/style&gt;
-                    </code></pre>
-                </section>
-
-                <section>
-                    <iframe src="font_face/font_face.html"></iframe>
-                </section>
-
-                <section>
-                    <h2>media queries</h2>
-                    <p>The media queries are not new but have been enhanced. They are very helpful when it comes to creating a responsive web-app, where you want to build pages that adapt themself depending of mainly screen size. But not exclusively, you can also check for orientation (landscape / portrait), aspect-ratio and some more. For a complete list check the <a href="http://www.w3.org/TR/css3-mediaqueries/">w3c page</a>.</p>
-                    <p>two good video tutorial can be found on <a href="http://net.tutsplus.com/tutorials/html-css-techniques/responsive-web-design-a-visual-guide/">nettuts</a> and another one on <a href="http://webdesign.about.com/od/css3/a/css3-media-queries.htm">about.com</a>.</p>
-                    <p>Again IE does not support media queries, to enable this feature in IE you could use the following <a href="http://code.google.com/p/css3-mediaqueries-js/">javascript polyfill</a>.</p>
-                    <p>examples of websites that use media queries can be found at <a href="http://mediaqueri.es/">http://mediaqueri.es/</a>.</p>
-                    <pre style="overflow:auto; height: 150px;">
+                    <section>
+                        <h2>media queries</h2>
+                        <p>The media queries are not new but have been enhanced. They are very helpful when it comes to creating a responsive web-app, where you want to build pages that adapt themself depending of mainly screen size. But not exclusively, you can also check for orientation (landscape / portrait), aspect-ratio and some more. For a complete list check the <a href="http://www.w3.org/TR/css3-mediaqueries/">w3c page</a>.</p>
+                        <p>two good video tutorial can be found on <a href="http://net.tutsplus.com/tutorials/html-css-techniques/responsive-web-design-a-visual-guide/">nettuts</a> and another one on <a href="http://webdesign.about.com/od/css3/a/css3-media-queries.htm">about.com</a>.</p>
+                    </section>
+                    <section>
+                        <p>IE (< 9) does not support media queries, to enable this feature in IE you could use the following <a href="http://code.google.com/p/css3-mediaqueries-js/">javascript polyfill</a>.</p>
+                        <p>examples of websites that use media queries can be found at <a href="http://mediaqueri.es/">http://mediaqueri.es/</a>.</p>
+                        <pre><code data-trim>
     &lt;style&gt;
         @media screen and (max-width: 480px) { p { background-color: red; } }
         @media screen and (min-width: 481px) and (max-width: 960px) { p { background-color: green; } }
         @media screen and (min-width: 961px)  and (max-width: 1024px) { p { background-color: blue; } }
         @media screen and (min-width: 1025px) { p { background-color: black; } }
     &lt;/style&gt;
-                    </code></pre>
-                    <p><a href="media_queries/media_queries.html">media queries example</a></p>
+                        </code></pre>
+                        <p><a href="examples/media_queries/media_queries.html">media queries example</a></p>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>transitions</h2>
-                    <p>Transitions are easy to use but what you get can be pretty nice. The main advantage is that transitions let you transition from one state to another. All you have to do is set the CSS property you want to transition from its initial state to another state i will have let's say on hover. Another property is the duration of the transition. You can also use a function to calculate intermediate values and finally you can define a delay that the transition should wait before starting.</p>
-                    <p>A good guide about transitions can be found on <a href="http://css3.bradshawenterprises.com/support/">this page</a>.</p>
-                    <pre style="overflow:auto; height: 280px;">
-    &lt;style&gt;
-        #ex1 {
-            background-color: brown;
-            color: yellow;
-            margin-bottom: 20px;
-        }
+                    <section>
+                        <h2>transitions</h2>
+                        <p>Transitions are easy to use but what you get can be pretty nice. The main advantage is that transitions let you transition from one state to another. All you have to do is set the CSS property you want to transition from its initial state to another state i will have let's say on hover. Another property is the duration of the transition. You can also use a function to calculate intermediate values and finally you can define a delay that the transition should wait before starting.</p>
+                        <p>A good guide about transitions can be found on <a href="http://css3.bradshawenterprises.com/support/">this page</a>.</p>
+                    </section>
+                    <section>
+                        <pre><code data-trim>
+&lt;style&gt;
+    #ex1 {
+        background-color: brown;
+        color: yellow;
+        margin-bottom: 20px;
+    }
 
-        #ex1:hover {
-            -moz-transition-property: background-color, color;
-            -moz-transition-duration: 3s;
-            -moz-transition-timing-function: ease-out;
-            -webkit-transition-property: background-color, color;
-            -webkit-transition-duration: 3s;
-            -webkit-transition-timing-function: ease-out;
-            background-color: yellow;
-            color: brown;
-        }
+    #ex1:hover {
+        -moz-transition-property: background-color, color;
+        -moz-transition-duration: 3s;
+        -moz-transition-timing-function: ease-out;
+        -webkit-transition-property: background-color, color;
+        -webkit-transition-duration: 3s;
+        -webkit-transition-timing-function: ease-out;
+        background-color: yellow;
+        color: brown;
+    }
 
-        #ex2 {
-            -moz-transition-property: background-color, color;
-            -moz-transition-duration: 3s;
-            -moz-transition-timing-function: ease-out;
-            -webkit-transition-property: background-color, color;
-            -webkit-transition-duration: 3s;
-            -webkit-transition-timing-function: ease-out;
-            background-color: blue;
-            color: white;
-            margin-bottom: 20px;
-        }
+    #ex2 {
+        -moz-transition-property: background-color, color;
+        -moz-transition-duration: 3s;
+        -moz-transition-timing-function: ease-out;
+        -webkit-transition-property: background-color, color;
+        -webkit-transition-duration: 3s;
+        -webkit-transition-timing-function: ease-out;
+        background-color: blue;
+        color: white;
+        margin-bottom: 20px;
+    }
 
-        #ex2:hover {
-            -moz-transition-property: background-color, color;
-            -moz-transition-duration: 3s;
-            -moz-transition-timing-function: ease-out;
-            -webkit-transition-property: background-color, color;
-            -webkit-transition-duration: 3s;
-            -webkit-transition-timing-function: ease-out;
-            background-color: white;
-            color: blue;
-        }
+    #ex2:hover {
+        -moz-transition-property: background-color, color;
+        -moz-transition-duration: 3s;
+        -moz-transition-timing-function: ease-out;
+        -webkit-transition-property: background-color, color;
+        -webkit-transition-duration: 3s;
+        -webkit-transition-timing-function: ease-out;
+        background-color: white;
+        color: blue;
+    }
 
-        #ex3 {
-            border: 1px solid black;
-        }
+    #ex3 {
+        border: 1px solid black;
+    }
 
-        #ex3:hover {
-            -moz-transition-property: box-shadow;
-            -moz-transition-duration: 3s;
-            -moz-transition-timing-function: ease-out;
-            -webkit-transition-property: box-shadow;
-            -webkit-transition-duration: 3s;
-            -webkit-transition-timing-function: ease-out;
-            -moz-box-shadow: 10px 10px 10px black;
-            -webkit-box-shadow: 10px 10px 10px black;
-        }
-    &lt;/style&gt;
-                    </code></pre>
+    #ex3:hover {
+        -moz-transition-property: box-shadow;
+        -moz-transition-duration: 3s;
+        -moz-transition-timing-function: ease-out;
+        -webkit-transition-property: box-shadow;
+        -webkit-transition-duration: 3s;
+        -webkit-transition-timing-function: ease-out;
+        -moz-box-shadow: 10px 10px 10px black;
+        -webkit-box-shadow: 10px 10px 10px black;
+    }
+&lt;/style&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <iframe src="examples/transitions/transitions.html" width="800" height="600"></iframe>
+                    </section>
                 </section>
 
                 <section>
-                    <iframe src="transitions/transitions.html"></iframe>
+                    <section>
+                        <h2>animations</h2>
+                        <p>The new CSS3 animations are very powerful, but also complex to learn. They are to do animations, that can be as complex as flash. The CSS3 @keyframes rules let you gradually change the properties of a DOM node. The animation properties let you define default values to describe the animation.</p>
+                        <p>Coding everything by hand can be heavily time consuming, but firms like Adobe will or already started creating animation tools that will make animating a lot easier. Take a look at their edge <a href="http://labs.adobe.com/technologies/edge/">preview</a>.</p>
+                    </section>
+                    <section>
+                        <p>To find some cool CSS3 animation examples, just <a href="http://www.google.lu/search?q=css3+animation+demo">google for them</a>, there is already a decent number of them out there.</p>
+                        <pre><code data-trim>
+&lt;style&gt;
+    @keyframes resize {
+            0% {
+                    padding: 0;
+            }
+            50% {
+                    padding: 0 20px;
+                    background-color:rgba(255,0,0,0.2);		
+            }
+            100% {
+                    padding: 0 100px;
+                    background-color:rgba(255,0,0,0.9);
+            }
+    }
+
+    #box {
+            animation-name: resize;
+            animation-duration: 1s;
+            animation-iteration-count: 4;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+    }
+&lt;/style&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <iframe src="examples/animations/animations.html" width="800" height="600"></iframe>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>animations</h2>
-                    <p>The new CSS3 animations are very powerful, but also complex to learn. They are to do animations, that can be as complex as flash. The CSS3 @keyframes rules let you gradually change the properties of a DOM node. The animation properties let you define default values to describe the animation.</p>
-                    <p>Coding everything by hand can be heavily time consuming, but firms like Adobe will or already started creating animation tools that will make animating a lot easier. Take a look at their edge <a href="http://labs.adobe.com/technologies/edge/">preview</a>.</p>
-                    <p>To find some cool CSS3 animation examples, just <a href="http://www.google.lu/search?q=css3+animation+demo">google for them</a>, there is already a decent number of them out there.</p>
-                    <pre style="overflow:auto; height: 200px;">
-    &lt;style&gt;
-        @keyframes resize {
-                0% {
-                        padding: 0;
-                }
-                50% {
-                        padding: 0 20px;
-                        background-color:rgba(255,0,0,0.2);		
-                }
-                100% {
-                        padding: 0 100px;
-                        background-color:rgba(255,0,0,0.9);
-                }
-        }
-
-        #box {
-                animation-name: resize;
-                animation-duration: 1s;
-                animation-iteration-count: 4;
-                animation-direction: alternate;
-                animation-timing-function: ease-in-out;
-        }
-    &lt;/style&gt;
-                    </code></pre>
+                    <section>
+                        <h2>transformations</h2>
+                        <p>Transformations do exactly what the name supposes. They allow you to transform a DOM node.</p>
+                        <p>A <a href="http://desandro.github.com/3dtransforms/examples/cube-02-show-sides.html">nice example of transformations</a> used to create a rotating (3d like) cube, made of different images transformed to make a cube. All of desandro's examples can be found on this <a href="http://desandro.github.com/3dtransforms/">github page</a>.</p>
+                        <pre><code data-trim>
+&lt;style&gt;
+    p {
+        -webkit-transform: rotate(30deg);
+        /*
+        -webkit-transform: rotateX(130deg);
+        -webkit-transform: rotateY(130deg);
+        */
+    }
+&lt;/style&gt;
+                        </code></pre>
+                        <p>For more details read the w3c <a href="http://www.w3.org/TR/2012/WD-css3-transforms-20120228/">CSS3 Transforms</a> working draft.</p>
+                    </section>
+                    <section>
+                        <iframe src="examples/transformations/transformations.html" width="800" height="600"></iframe>
+                    </section>
                 </section>
 
-                <section>
-                    <iframe src="animations/animations.html"></iframe>
-                </section>
-
-                <section>
-                    <h2>transformations</h2>
-                    <p>Transformations do exactly what the name supposes. They allow you to transform a DOM node.</p>
-                    <p>A <a href="http://desandro.github.com/3dtransforms/examples/cube-02-show-sides.html">nice example of transformations</a> used to create a rotating (3d like) cube, made of different images transformed to make a cube. All of desandro's examples can be found on this <a href="http://desandro.github.com/3dtransforms/">github page</a>.</p>
-                    <pre><code data-trim>
-    &lt;style&gt;
-        p {
-            -webkit-transform: rotate(30deg);
-            /*
-            -webkit-transform: rotateX(130deg);
-            -webkit-transform: rotateY(130deg);
-            */
-        }
-    &lt;/style&gt;
-                    </code></pre>
-                    <p>For more details read the w3c <a href="http://www.w3.org/TR/2012/WD-css3-transforms-20120228/">CSS3 Transforms</a> working draft.</p>
-                </section>
-
-                <section>
-                    <iframe src="transformations/transformations.html"></iframe>
-                </section>
 
                 <section>
                     <h2>css3 selectors</h2>
@@ -1797,77 +1800,79 @@
                 </section>
 
                 <section>
-                    <h2>Interesting Tools and Resources</h2>
+                    <section>
+                        <h2>Interesting Tools and Resources</h2>
 
-                    <p>Github social codings has lots of interesting projects to enhance your html5 / CSS3 website.</p>
-                    <a href="https://github.com/">https://github.com/</a>
+                        <p>Github social codings has lots of interesting projects to enhance your html5 / CSS3 website.</p>
+                        <a href="https://github.com/">https://github.com/</a>
 
-                    <p>You have a question about a web technology, ask stackoverflow users or find the answer by searching for someone asking a similar question:</p>
-                    <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>
+                        <p>You have a question about a web technology, ask stackoverflow users or find the answer by searching for someone asking a similar question:</p>
+                        <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>
 
-                    <p>CSS3 examples with browser compatibility informations:</p>
-                    <a href="http://css3clickchart.com">http://css3clickchart.com</a>
+                        <p>CSS3 examples with browser compatibility informations:</p>
+                        <a href="http://css3clickchart.com">http://css3clickchart.com</a>
 
-                    <p>Wonder when you will be able to use a certain feature, then ask caniuse:</p>
-                    <a href="http://caniuse.com/">http://caniuse.com/</a>
+                        <p>Wonder when you will be able to use a certain feature, then ask caniuse:</p>
+                        <a href="http://caniuse.com/">http://caniuse.com/</a>
 
-                    <p>Also very useful to check whatever feature is safe to use is:</p>
-                    <a href="http://html5please.us/">http://html5please.us/</a>
+                        <p>Also very useful to check whatever feature is safe to use is:</p>
+                        <a href="http://html5please.us/">http://html5please.us/</a>
 
-                    <p>Check if your browser can handle a feature:</p>
-                    <a href="http://platform.html5.org/">http://platform.html5.org/</a>
+                    </section>
+                    <section>
 
-                </section>
+                        <p>Check if your browser can handle a feature:</p>
+                        <a href="http://platform.html5.org/">http://platform.html5.org/</a>
 
-                <section>
+                        <p>An html5 mobile comparison chart:</p>
+                        <a href="http://mobilehtml5.org/">http://mobilehtml5.org/</a>
 
-                    <p>An html5 mobile comparison chart:</p>
-                    <a href="http://mobilehtml5.org/">http://mobilehtml5.org/</a>
+                        <p>Check if your browser has a feature or use a fallback method instead with modernizr:</p>
+                        <a href="http://www.modernizr.com/">http://www.modernizr.com/</a>
 
-                    <p>Check if your browser has a feature or use a fallback method instead with modernizr:</p>
-                    <a href="http://www.modernizr.com/">http://www.modernizr.com/</a>
+                        <p>Need a template to start with html5, check out html5 boilerplate:</p>
+                        <a href="http://html5boilerplate.com/">http://html5boilerplate.com/</a>
 
-                    <p>Need a template to start with html5, check out html5 boilerplate:</p>
-                    <a href="http://html5boilerplate.com/">http://html5boilerplate.com/</a>
+                        <p>w3c validator:</p>
+                        <a href="http://validator.w3.org/">http://validator.w3.org/</a>
 
-                    <p>w3c validator:</p>
-                    <a href="http://validator.w3.org/">http://validator.w3.org/</a>
+                    </section>
+                    <section>
+                        
+                        <p>twitter bootstrap:</p>
+                        <a href="http://twitter.github.com/bootstrap/">http://twitter.github.com/bootstrap/</a>
 
-                    <p>twitter bootstrap:</p>
-                    <a href="http://twitter.github.com/bootstrap/">http://twitter.github.com/bootstrap/</a>
+                        <p>html5rocks slides:</p>
+                        <a href="http://slides.html5rocks.com/#landing-slide">http://slides.html5rocks.com/#landing-slide</a>
 
-                    <p>html5rocks slides:</p>
-                    <a href="http://slides.html5rocks.com/#landing-slide">http://slides.html5rocks.com/#landing-slide</a>
+                        <p>html5test (test your browser)</p>
+                        <a href="http://html5test.com/">http://html5test.com/</a>
 
-                    <p>html5test (test your browser)</p>
-                    <a href="http://html5test.com/">http://html5test.com/</a>
+                        <p>html5 doctor:</p>
+                        <a href="http://html5doctor.com/">http://html5doctor.com/</a>
 
-                </section>
+                        <p>dive into html5:</p>
+                        <a href="http://diveintohtml5.info/">http://diveintohtml5.info/</a>
 
-                <section>
+                    </section>
+                    <section>
+                        
+                        <p>CSS3:</p>
+                        <a href="http://www.css3.info/">http://www.css3.info/</a>
 
-                    <p>html5 doctor:</p>
-                    <a href="http://html5doctor.com/">http://html5doctor.com/</a>
+                        <p>html5 demos:</p>
+                        <a href="http://html5demos.com/">http://html5demos.com/</a>
 
-                    <p>dive into html5:</p>
-                    <a href="http://diveintohtml5.info/">http://diveintohtml5.info/</a>
+                        <p>convert flash to html5:</p>
+                        <a href="http://www.google.com/doubleclick/studio/swiffy/">http://www.google.com/doubleclick/studio/swiffy/</a><br />
+                        <a href="http://labs.adobe.com/technologies/wallaby/">http://labs.adobe.com/technologies/wallaby/</a>
 
-                    <p>CSS3:</p>
-                    <a href="http://www.css3.info/">http://www.css3.info/</a>
+                        <p>adobe edge:</p>
+                        <a href="http://labs.adobe.com/technologies/edge/">http://labs.adobe.com/technologies/edge/</a>
 
-                    <p>html5 demos:</p>
-                    <a href="http://html5demos.com/">http://html5demos.com/</a>
-
-                    <p>convert flash to html5:</p>
-                    <a href="http://www.google.com/doubleclick/studio/swiffy/">http://www.google.com/doubleclick/studio/swiffy/</a><br />
-                    <a href="http://labs.adobe.com/technologies/wallaby/">http://labs.adobe.com/technologies/wallaby/</a>
-
-                    <p>adobe edge:</p>
-                    <a href="http://labs.adobe.com/technologies/edge/">http://labs.adobe.com/technologies/edge/</a>
-
-                    <p>the w3c html5 mailinglist</p>
-                    <a href="http://lists.w3.org/Archives/Public/public-html-comments/">the w3c html5 mailinglist</a>
-
+                        <p>the w3c html5 mailinglist</p>
+                        <a href="http://lists.w3.org/Archives/Public/public-html-comments/">the w3c html5 mailinglist</a>
+                    </section>
                 </section>
 
                 <section>
@@ -1878,17 +1883,17 @@
                             </td>
                             <td style="width: 50%;">
                                 <p>HTML5: Up and Running</p>
-                                <img src="book2.jpg" alt="image of book: HTML5: Up and Running" />
+                                <img src="images/book2.jpg" alt="image of book: HTML5: Up and Running" />
                             </td>
                         </tr>
                         <tr>
                             <td style="width: 50%;">
                                 <p>Pro HTML5 Programming: Powerful APIs for Richer Internet Application Development</p>
-                                <img src="book3.jpg" alt="image of book: Pro HTML5 Programming: Powerful APIs for Richer Internet Application Development" />
+                                <img src="images/book3.jpg" alt="image of book: Pro HTML5 Programming: Powerful APIs for Richer Internet Application Development" />
                             </td>
                             <td style="width: 50%;">
                                 <p>Introducing HTML5 (2nd Edition)</p>
-                                <img src="book1.jpg" alt="image of book: Introducing HTML5 (2nd Edition)" />
+                                <img src="images/book1.jpg" alt="image of book: Introducing HTML5 (2nd Edition)" />
                             </td>
                         </tr>
                     </table>
@@ -1943,6 +1948,111 @@
 			});
 
 		</script>
+        
+        <script>
+            
+            Reveal.addEventListener('ready', function(event) {
+                
+                executeSectionScript(event.indexh);
+                
+            });
+            
+            Reveal.addEventListener('slidechanged',function(event) {
+               
+               executeSectionScript(event.indexh);
+               
+            });
+            
+            var executeSectionScript = function(sectionIndex) {
+                
+                console.log(sectionIndex);
+                
+                if (sectionIndex === 25) {
 
+                     var meterBar = document.getElementById('meterBar');
+                     var meterCounter = 0;
+                     var timeout;
+
+                     var updateMeter = function() {
+
+                         console.log('meter on');
+
+                         var newValue = Math.random();
+                         newValue = newValue * 100;
+
+                         meterBar.value = newValue;
+
+                         timeout = window.setTimeout(updateMeter, 1000);
+
+                         meterCounter++;
+
+                         if (meterCounter > 10) {
+
+                             window.clearTimeout(timeout);
+                             meterCounter = 50;
+
+                         }
+
+                     };
+                     
+                     updateMeter();
+
+                }
+                
+                if (sectionIndex === 30) {
+                    
+                    var initialize = function() {
+
+                        var canvas = document.getElementById('example');
+
+                        if (canvas.getContext) {
+
+                            var context = canvas.getContext('2d');
+
+                            fillRectangle(context);
+                            drawLine(context);
+
+                        }
+
+                    };
+
+                    var drawLine = function(context) {
+
+                        context.moveTo(100, 150);
+                        context.lineTo(250, 50);
+                        context.stroke();
+
+                    };
+
+                    var fillRectangle = function(context) {
+
+                        var gradient = context.createLinearGradient(0, 0, 0, 100);
+                        gradient.addColorStop(0, "#ff005a");
+                        gradient.addColorStop(1, "#ff985a");
+
+                        context.fillStyle = gradient;
+                        context.fillRect(50, 50, 150, 150);
+
+                    };
+                    
+                    initialize();
+                
+                }
+                
+                if (sectionIndex === 56) {
+                
+                    var initialzeAudio = function() {
+                        console.log(document.getElementByID('example').duration);
+                        console.log(document.getElementByID('example').currentTime);
+                    };
+                    
+                    initialzeAudio();
+                            
+                }
+                
+            };
+            
+        </script>
+        
 	</body>
 </html>
