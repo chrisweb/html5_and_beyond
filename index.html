@@ -12,12 +12,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+		<link rel="stylesheet" href="css/theme/chris.css" id="theme">
         
         <!-- styles used by the examples -->
         <style>
             :invalid {
                 border: 1px solid red;
+            }
+            
+            .down {
+                border: 0px !important;
+                box-shadow: none !important;
+                background: transparent !important;
             }
         </style>
 
@@ -53,6 +59,7 @@
                         <li>Use the arrow keys to navigate through the slides. Use the Up / Down / Left and Right keys.</li>
                         <li>Press ESC to enter the slide overview.</li>
                     </ul>
+                    <img src="images/logo_small.gif">
 				</section>
                 
                 <section>
@@ -117,6 +124,7 @@
                             <li>UTF-8 + URI = IRI</li>
                             <li>no need to have &lt;html&gt; &lt;head&gt; and or &lt;body&gt; tags (browser adds them autonatically / <a href="examples/basic_document/html5_minimal.html">try it out</a> view source VS inspect element)</li>
                         </ul>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <pre><code data-trim>
@@ -425,6 +433,7 @@
     &lt;/body&gt;
 &lt;/html&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <img src="images/lightbulb.png" style="float: left;">
@@ -439,10 +448,13 @@
                     <section>
                         <h2>Codecs</h2>
                         <h3>Video codecs:</h3>
-                        <ul>
-                            <li>safari, chrome and IE: h.264</li>
-                            <li>chrome, opera and firefox: ogg (Ogg Theora) and webm</li>
-                        </ul>
+                        <p>
+                            <ul>
+                                <li>safari, chrome and IE: h.264</li>
+                                <li>chrome, opera and firefox: ogg (Ogg Theora) and webm</li>
+                            </ul>
+                        </p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <h3>Audio codecs:</h3>
@@ -451,6 +463,7 @@
                             <li>chrome, opera and firefox: ogg (Ogg Vorbis)</li>
                         </ul>
                         <p>source: <a href="http://caniuse.com/#search=video">caniuse.com</a></p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <img src="images/lightbulb.png" style="float: left;">
@@ -535,6 +548,7 @@
                         </code></pre>
                         <p>A good article describing how to use the time tag can be found <a href="http://www.brucelawson.co.uk/2012/best-of-time/">on Bruce Lawson's blog</a></p>
                         <p>Some time ago <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=13240">the time tag was dropped</a>, but then after protest of web developers was put back in.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <img src="images/lightbulb.png" style="float: left;">
@@ -590,6 +604,7 @@
                             <li>for IE there is a javascript polyfill library that emulates canvas in older IE version by using SVG graphics instead of canvas, that library is called <a href="http://excanvas.sourceforge.net/">excanvas.js</a></li>
                             <li>This article compares two well known <a href="http://coding.smashingmagazine.com/2012/02/22/web-drawing-throwdown-paper-processing-raphael/">javascript drawing libraries</a> that make use of the canvas element, <a href="http://paperjs.org/">paper.js</a> and <a href="http://processingjs.org/">processing.js</a>.</li>
                         </ul>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <ul>
@@ -600,6 +615,7 @@
                         <blockquote>
                             when setting the size of a canvas area use the canvas tag width and height attributes, else image gets scaled to fir size defined by css
                         </blockquote>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <h2>Basic example (Code):</h2>
@@ -657,6 +673,7 @@
 &lt;/body&gt;
 &lt;/html&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <h2>Basic example (Result):</h2>
@@ -778,6 +795,7 @@
                             <li>Most of them can be used now, some of them like video, audio and canvas tag should fallback to other technologies if not supported</li>
                             <li>Therefore you will probably need a feature detection like <a href="https://github.com/Modernizr/Modernizr">modernizr</a> and <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">polyfills</a> to emulate the native feature in older browsers if modernizr tells you that the feature is not supported</li>
                         </ul>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <ul>
@@ -803,6 +821,7 @@
                         <blockquote>
                             it's recommended that you use a specific prefix after the data prefix for your app to avoid conflicts with other libraries you use that also use the data attribute but may not have an own prefix
                         </blockquote>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <pre><code data-trim>
@@ -891,6 +910,7 @@
                         </div>
                         <div style="clear: both;"></div>
                         <p>An howto for using yepnope and modernizr to detect the new native form input types or use a fallback can be found at <a href="http://css-tricks.com/progressively-enhancing-html5-forms/">css-tricks.com</a></p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <pre><code data-trim>
@@ -1014,6 +1034,7 @@ OR
                         <p>HTML5 defines some types of links using the <b>rel attribute</b>. One of the new values is <b>prefetch</b> with tells the browser that it can prefetch that link because it is likely this resource next.</p>
                         <p>Or the values <b>prev and next</b> which are useful for pagination.</p>
                         <p><b>Nofollow</b> tells search engines that the link should not influence link targets rating (its useful to avoid hackers to spam your comments sections with posts full of links if you apply automatically nofollow to all links that are in comments).</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>The <b>bookmark</b> link type could be very usefull too, it specifies a permalink for the parent content. In combination with url shorteners like <a href="http://goo.gl/">goo.gl</a> and the <a href="http://support.google.com/webmasters/bin/answer.py?hl=en&answer=139394">rel="canonical"</a> you could make permalinks that are usefull for the visitor as well as search engines. Canonical is not part of the HTML5 specification but it will not make your html5 page invalid, because the HTML5 specification says that values of the rel attribute that are unrecognized by the browser will be treated as normal links.</p>
@@ -1027,12 +1048,14 @@ OR
                         <p>Microdata are <b>machine-readable labels</b> that can enhance the semantic value of your documents for crawlers like google bot.</p>
                         <p>the w3c <a href="http://www.w3.org/TR/microdata/">microdata specification</a>.</p>
                         <p>A definition of structures for microdata from <a href="http://schema.org/docs/gs.html">schema.org</a>.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <h2>Microdata = SEO ?</h2>
                         <p>I think so</p>
                         <p>Google has <a href="http://support.google.com/webmasters/bin/answer.py?hl=en&answer=99170">a very useful page</a> about microdata, at the end of the page are examples of microdata that google recognizes like people or reviews. Go for example to the page reviews and there you will find examples howto use microdata to ensure google uses your data to create rich snippets that will enhance the search results of your site in google results pages.</p>
                         <p>You can <a href="http://www.google.com/webmasters/tools/richsnippets">test your page</a> to <b>check if google recognizes your microdata</b>.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>Look at the microdata example file, to see an example of a document containing a blog post and comments (source: w3c HTML5 specification).</p>
@@ -1167,6 +1190,7 @@ OR
     &lt;/body&gt;
 &lt;/html&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <audio id="audio_example" controls="controls" preload="auto">
@@ -1204,6 +1228,7 @@ OR
                         <h2>history API (hashchange)</h2>
                         <p>API that exposes the history and allows pages to add to it to <b>prevent breaking the back button</b>. </p>
                         <p>This new API is especially useful, if for example you use <b>Ajax</b> to retrieve a list of news and the <b>user changes the filters</b> and then he bookmarks the page. When he comes back, everything is reset and he sees the default news list again. But if you change the URI using the history API while he changes the filter options to save their state in the url and he then bookmarks the page, every time he comes back the filters will be set to the values he had selected when making the bookmark.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>An impressive example of the history API, is <b>github</b>, check out how github only reloads the content area of the page and changes the url without reloading the whole page. jQuery Mobile also uses the history API, jQuery Mobile loads new pages using Ajax, adds those pages to the DOM and then changes the url.</p>
@@ -1253,6 +1278,7 @@ OR
 &lt;html lang=&quot;en&quot; manifest=&quot;my.manifest&quot;&gt;
                         </code></pre>
                         <p>More informations about the manifest can be found in the <a href="https://developer.mozilla.org/en/Offline_resources_in_Firefox">mozilla developer zone</a> and on <a href="http://www.html5rocks.com/en/tutorials/appcache/beginner/">html5rocks</a></p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <img src="images/lightbulb.png" style="float: left;">
@@ -1276,6 +1302,7 @@ http://google-analytics.com/ga.js
 FALLBACK:
 /login login.html
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>The manifest file has three sections.</p>
@@ -1319,6 +1346,7 @@ sessionStorage.clear();
                         <pre><code data-trim>
 &lt;input type=&quot;file&quot; id=&quot;input&quot; multiple onchange=&quot;handleFiles(this.files)&quot;&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>The w3c html5 <a href="http://www.w3.org/TR/FileAPI/">file API</a> draft and here is the <a href="http://www.html5rocks.com/en/tutorials/file/filesystem/">filesystem API w3c page</a>.</p>
@@ -1339,6 +1367,7 @@ sessionStorage.clear();
                         <h2>webRTC / getUserMedia() API</h2>
                         <p>getUserMedia() or the prefixed webkit version webkitGetUserMedia() also called the device API, is a function that will allow us to build great web apps in the future, but it's not part of HTML5. A good source of informations is the <a href="http://dev.w3.org/2011/webrtc/editor/getusermedia.html">webRTC w3c editors draft</a></p>
                         <p>getUserMedia() can be used to access the users webcam, the video stream can be displayed in a canvas element and therefore be modified in real time using canvas functionality. <a href="http://dev.opera.com/articles/view/playing-with-html5-video-and-getusermedia-support/">Opera is the has a nice example</a>.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>The <a href="http://www.w3.org/TR/webrtc/">w3c editors draft can be found here</a>.</p>
@@ -1380,6 +1409,7 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <h2>web sockets</h2>
                         <p>Web sockets allow you to build a <b>bi-directional communication</b> channel to a socket of your server. That connection stays open for as long as you want, you can send data as often as needed to the server. The server can push answers to the client every time he wants, the server doesn't need to wait for the client to ask something.</p>
                         <p>An application that needs such a feature is a chat. An ajax chat would have to check every second if there is a new message an the server that got written by another user using an ajax request. With web sockets all you need to do is open a connection and <b>wait for incoming messages</b> by the server.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <pre><code data-trim>
@@ -1406,6 +1436,7 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <h2>XMLHttpRequest (Level2)</h2>
                         <p>Your right if you think that xmlhttprequest are nothing new, the news is the level2 suffix.</p>
                         <p><b>The most important new advantages of xhr2 are a standardized technique, xhr file transfer (ajax file upload) and cross domain xhr requests.</b></p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <pre><code data-trim>
@@ -1428,6 +1459,7 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <h2>contenteditable attribute</h2>
                         <p>This new feature allows you make elements editable, like a div containing some text.</p>
                         <p>The <a href="http://www.w3.org/TR/html5/editing.html#attr-contenteditable">w3c's description</a> of this new feature. A very good article about <a href="http://html5doctor.com/the-contenteditable-attribute/">contenteditable</a> can be found at html5doctor. A small demo can be found on this <a href="http://html5demos.com/contenteditable">page</a>.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>You may wonder for what this is usefull, if we already have forms or what you should done after then content got edited. I think the idea is to <b>listen to changes</b> using javascript, for example for keypress events on the contenteditable div and then send those changes to the <b>server</b> by using ajax. You could also record changes using javascript and then do some <b>interaction</b> with another page content or some other fancy things using javascript.</p>
@@ -1457,6 +1489,7 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <h2>webSQL</h2>
                         <p>This API is not active anymore, if you want more details take a look at the <a href="http://www.w3.org/TR/webdatabase/">w3c webdatabase specification</a>.</p>
                         <p>The w3c decided to stop working on this specification because of a lack of different implementation ways. Every vendor that supported it used SQLite as the backend. Therefore the w3c was unable to test different implementations and stopped the working group.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>In my opinion is very sad for the web not to have something like an SQL Database in the browser, but i don't blame anyone because i can understand why the w3c stopped their work and i can understand the browser vendors for all choosing SQLite as backend, writing and supporting an own backend can be a lot of work.</p>
@@ -1490,9 +1523,12 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
     span { background-color: rgba(0, 255, 0, 0.8); position: absolute; top: 200px; width: 300px; height: 100px; z-index: 1; }
 &lt;/style&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
-                        <iframe src="examples/rgba/rgba.html" width="800" height="600"></iframe>
+                        <p>
+                            <iframe src="examples/rgba/rgba.html" width="800" height="600"></iframe>
+                        </p>
                     </section>
                 </section>
 
@@ -1507,9 +1543,12 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
     div { text-shadow: 2px 2px 2px black; font-size: 26px; }
 &lt;/style&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
-                        <iframe src="examples/text_shadow/text_shadow.html" width="800" height="600"></iframe>
+                        <p>
+                            <iframe src="examples/text_shadow/text_shadow.html" width="800" height="600"></iframe>
+                        </p>
                     </section>
                 </section>
 
@@ -1523,9 +1562,12 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
     div { box-shadow: 5px 5px 7px #f2af2a; border: 1px solid #f2af2a; width: 100px; height: 100px; margin: 50px; }
 &lt;/style&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
-                        <iframe src="examples/box_shadow/box_shadow.html" width="800" height="600"></iframe>
+                        <p>
+                            <iframe src="examples/box_shadow/box_shadow.html" width="800" height="600"></iframe>
+                        </p>
                     </section>
                 </section>
 
@@ -1535,6 +1577,7 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <p>gradients made with CSS, no need to create an image in gimp anymore.</p>
                         <p>For linear gradients you define a direction or angle, the start color and an unlimited number of stop colors. Optionally you can also define a length per color (with the length you can change the natural position where a color would start by a value you think is better, in percent).</p>
                         <p>For radial gradients the syntax is similar but slightly more complex, first you define a position where the gradient should start, second parameter is the type of shape (circle or ellipse) and optionally it's size (closest-side, farthest-side, closest-corner, farthest-corner), then like for linear gradients an unlimited number of color stops.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>Radial and linear gradients can also repeat their colors indefinitely, by using the repeating gradients functions for either repeating linear or radial gradients.</p>
@@ -1542,6 +1585,7 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <p>Here is a nice tool that let's you play with gradients to help you quickly find the gradient you want to use: http://gradients.glrzad.com/ or http://www.colorzilla.com/gradient-editor/.</p>
                         <p><a href="http://dev.w3.org/csswg/css3-images/#linear-gradients">The w3c draft for gradients</a> is a good source of information.</p>
                         <p>Using the radial gradient for the body background was tricky, a good solution can be found in a <a href="http://stackoverflow.com/questions/2869212/css3-gradient-background-set-on-body-doesnt-stretch-but-instead-repeats">stackoverflow post</a>.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <pre><code data-trim>
@@ -1568,14 +1612,18 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
     }
 &lt;/style&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
-
                     <section>
-                        <iframe src="examples/gradients/basic-linear.html" width="800" height="600"></iframe>
+                        <p>
+                            <iframe src="examples/gradients/basic-linear.html" width="800" height="600"></iframe>
+                        </p>
+                        <img src="images/down.png" class="down">
                     </section>
-
                     <section>
-                        <iframe src="examples/gradients/basic-radial.html" width="800" height="600"></iframe>
+                        <p>
+                            <iframe src="examples/gradients/basic-radial.html" width="800" height="600"></iframe>
+                        </p>
                     </section>
                 </section>
 
@@ -1599,9 +1647,12 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
     }
 &lt;/style&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
-                        <iframe src="examples/font_face/font_face.html" width="400" height="400"></iframe>
+                        <p>
+                            <iframe src="examples/font_face/font_face.html" width="400" height="400"></iframe>
+                        </p>
                     </section>
                 </section>
 
@@ -1610,6 +1661,7 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <h2>media queries</h2>
                         <p>The media queries are not new but have been enhanced. They are very helpful when it comes to creating a responsive web-app, where you want to build pages that adapt themself depending of mainly screen size. But not exclusively, you can also check for orientation (landscape / portrait), aspect-ratio and some more. For a complete list check the <a href="http://www.w3.org/TR/css3-mediaqueries/">w3c page</a>.</p>
                         <p>two good video tutorial can be found on <a href="http://net.tutsplus.com/tutorials/html-css-techniques/responsive-web-design-a-visual-guide/">nettuts</a> and another one on <a href="http://webdesign.about.com/od/css3/a/css3-media-queries.htm">about.com</a>.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>IE (< 9) does not support media queries, to enable this feature in IE you could use the following <a href="http://code.google.com/p/css3-mediaqueries-js/">javascript polyfill</a>.</p>
@@ -1631,6 +1683,7 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <h2>transitions</h2>
                         <p>Transitions are easy to use but what you get can be pretty nice. The main advantage is that transitions let you transition from one state to another. All you have to do is set the CSS property you want to transition from its initial state to another state i will have let's say on hover. Another property is the duration of the transition. You can also use a function to calculate intermediate values and finally you can define a delay that the transition should wait before starting.</p>
                         <p>A good guide about transitions can be found on <a href="http://css3.bradshawenterprises.com/support/">this page</a>.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <pre><code data-trim>
@@ -1691,9 +1744,12 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
     }
 &lt;/style&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
-                        <iframe src="examples/transitions/transitions.html" width="800" height="600"></iframe>
+                        <p>
+                            <iframe src="examples/transitions/transitions.html" width="800" height="600"></iframe>
+                        </p>
                     </section>
                 </section>
 
@@ -1702,6 +1758,7 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <h2>animations</h2>
                         <p>The new CSS3 animations are very powerful, but also complex to learn. They are to do animations, that can be as complex as flash. The CSS3 @keyframes rules let you gradually change the properties of a DOM node. The animation properties let you define default values to describe the animation.</p>
                         <p>Coding everything by hand can be heavily time consuming, but firms like Adobe will or already started creating animation tools that will make animating a lot easier. Take a look at their edge <a href="http://labs.adobe.com/technologies/edge/">preview</a>.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         <p>To find some cool CSS3 animation examples, just <a href="http://www.google.lu/search?q=css3+animation+demo">google for them</a>, there is already a decent number of them out there.</p>
@@ -1730,9 +1787,12 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
     }
 &lt;/style&gt;
                         </code></pre>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
-                        <iframe src="examples/animations/animations.html" width="800" height="600"></iframe>
+                        <p>
+                            <iframe src="examples/animations/animations.html" width="800" height="600"></iframe>
+                        </p>
                     </section>
                 </section>
 
@@ -1753,9 +1813,12 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
 &lt;/style&gt;
                         </code></pre>
                         <p>For more details read the w3c <a href="http://www.w3.org/TR/2012/WD-css3-transforms-20120228/">CSS3 Transforms</a> working draft.</p>
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
-                        <iframe src="examples/transformations/transformations.html" width="800" height="600"></iframe>
+                        <p>
+                            <iframe src="examples/transformations/transformations.html" width="800" height="600"></iframe>
+                        </p>
                     </section>
                 </section>
 
@@ -1804,74 +1867,77 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                         <h2>Interesting Tools and Resources</h2>
 
                         <p>Github social codings has lots of interesting projects to enhance your html5 / CSS3 website.</p>
-                        <a href="https://github.com/">https://github.com/</a>
+                        <p><a href="https://github.com/">https://github.com/</a></p>
 
                         <p>You have a question about a web technology, ask stackoverflow users or find the answer by searching for someone asking a similar question:</p>
-                        <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>
+                        <p><a href="http://stackoverflow.com/">http://stackoverflow.com/</a></p>
 
                         <p>CSS3 examples with browser compatibility informations:</p>
-                        <a href="http://css3clickchart.com">http://css3clickchart.com</a>
+                        <p><a href="http://css3clickchart.com">http://css3clickchart.com</a></p>
 
                         <p>Wonder when you will be able to use a certain feature, then ask caniuse:</p>
-                        <a href="http://caniuse.com/">http://caniuse.com/</a>
+                        <p><a href="http://caniuse.com/">http://caniuse.com/</a></p>
 
                         <p>Also very useful to check whatever feature is safe to use is:</p>
-                        <a href="http://html5please.us/">http://html5please.us/</a>
-
+                        <p><a href="http://html5please.us/">http://html5please.us/</a></p>
+                        
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
 
                         <p>Check if your browser can handle a feature:</p>
-                        <a href="http://platform.html5.org/">http://platform.html5.org/</a>
+                        <p><a href="http://platform.html5.org/">http://platform.html5.org/</a></p>
 
                         <p>An html5 mobile comparison chart:</p>
-                        <a href="http://mobilehtml5.org/">http://mobilehtml5.org/</a>
+                        <p><a href="http://mobilehtml5.org/">http://mobilehtml5.org/</a></p>
 
                         <p>Check if your browser has a feature or use a fallback method instead with modernizr:</p>
-                        <a href="http://www.modernizr.com/">http://www.modernizr.com/</a>
+                        <p><a href="http://www.modernizr.com/">http://www.modernizr.com/</a></p>
 
                         <p>Need a template to start with html5, check out html5 boilerplate:</p>
-                        <a href="http://html5boilerplate.com/">http://html5boilerplate.com/</a>
+                        <p><a href="http://html5boilerplate.com/">http://html5boilerplate.com/</a></p>
 
                         <p>w3c validator:</p>
-                        <a href="http://validator.w3.org/">http://validator.w3.org/</a>
-
+                        <p><a href="http://validator.w3.org/">http://validator.w3.org/</a></p>
+                        
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         
                         <p>twitter bootstrap:</p>
-                        <a href="http://twitter.github.com/bootstrap/">http://twitter.github.com/bootstrap/</a>
+                        <p><a href="http://twitter.github.com/bootstrap/">http://twitter.github.com/bootstrap/</a></p>
 
                         <p>html5rocks slides:</p>
-                        <a href="http://slides.html5rocks.com/#landing-slide">http://slides.html5rocks.com/#landing-slide</a>
+                        <p><a href="http://slides.html5rocks.com/#landing-slide">http://slides.html5rocks.com/#landing-slide</a></p>
 
                         <p>html5test (test your browser)</p>
-                        <a href="http://html5test.com/">http://html5test.com/</a>
+                        <p><a href="http://html5test.com/">http://html5test.com/</a></p>
 
                         <p>html5 doctor:</p>
-                        <a href="http://html5doctor.com/">http://html5doctor.com/</a>
+                        <p><a href="http://html5doctor.com/">http://html5doctor.com/</a></p>
 
                         <p>dive into html5:</p>
-                        <a href="http://diveintohtml5.info/">http://diveintohtml5.info/</a>
-
+                        <p><a href="http://diveintohtml5.info/">http://diveintohtml5.info/</a></p>
+                        
+                        <img src="images/down.png" class="down">
                     </section>
                     <section>
                         
                         <p>CSS3:</p>
-                        <a href="http://www.css3.info/">http://www.css3.info/</a>
+                        <p><a href="http://www.css3.info/">http://www.css3.info/</a></p>
 
                         <p>html5 demos:</p>
-                        <a href="http://html5demos.com/">http://html5demos.com/</a>
+                        <p><a href="http://html5demos.com/">http://html5demos.com/</a></p>
 
                         <p>convert flash to html5:</p>
-                        <a href="http://www.google.com/doubleclick/studio/swiffy/">http://www.google.com/doubleclick/studio/swiffy/</a><br />
-                        <a href="http://labs.adobe.com/technologies/wallaby/">http://labs.adobe.com/technologies/wallaby/</a>
+                        <p><a href="http://www.google.com/doubleclick/studio/swiffy/">http://www.google.com/doubleclick/studio/swiffy/</a></p>
+                        <p><a href="http://labs.adobe.com/technologies/wallaby/">http://labs.adobe.com/technologies/wallaby/</a></p>
 
                         <p>adobe edge:</p>
-                        <a href="http://labs.adobe.com/technologies/edge/">http://labs.adobe.com/technologies/edge/</a>
+                        <p><a href="http://labs.adobe.com/technologies/edge/">http://labs.adobe.com/technologies/edge/</a></p>
 
                         <p>the w3c html5 mailinglist</p>
-                        <a href="http://lists.w3.org/Archives/Public/public-html-comments/">the w3c html5 mailinglist</a>
+                        <p><a href="http://lists.w3.org/Archives/Public/public-html-comments/">the w3c html5 mailinglist</a></p>
                     </section>
                 </section>
 
@@ -1897,9 +1963,6 @@ var domNodes = document.querySelectorAll('.classA', '.classB');
                             </td>
                         </tr>
                     </table>
-
-
-
                 </section>
 
                 <section>
